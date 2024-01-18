@@ -37,6 +37,8 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
         ]);
+
+       
     
         // Utiliza el método create de Eloquent para crear y guardar un nuevo producto
         Product::create([

@@ -28,8 +28,8 @@
             <td>{{$product->stock}}</td>
 
             <td>
-                <a class="btn btn-info" href="{{ route('products.edit', $product->id) }}">Editar</a>
-                <button class="btn btn-danger">Eliminar</button>
+                <a class="btn btn-info" href="{{ route('products.edit', $product->id) }}"><i class="fa-solid fa-pencil"></i></a>
+                <a class="btn btn-danger" href="{{ route('products.edit', $product->id) }}"><i class="fa-solid fa-trash-can"></i></a>
             </td>
         </tr>
         @endforeach
