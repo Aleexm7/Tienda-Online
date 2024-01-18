@@ -95,5 +95,16 @@ class ProductController extends Controller
         //
     }
 
+    public function customIndex(Request $request){
+        $cantidadRegistros = $request->input('show', 5);
+
+        // Asegúrate de que $cantidadRegistros sea un número válido
+        $cantidadRegistros = in_array($cantidadRegistros, [5, 10, 20]) ? $cantidadRegistros : 5;
+
+        $products = Product::paginate($cantidadRegistros);
+
+        return view('products.index')->with('products', $products);
+    }
+
 
 }

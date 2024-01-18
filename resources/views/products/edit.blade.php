@@ -1,4 +1,4 @@
-@extends('products.viewproducts')
+@extends('layouts.admin-template')
 
 @section('crud_edit')
 
@@ -27,7 +27,7 @@
         <input type="number" name="stock" id="stock" class="form-control" value="{{ $product->stock }}">
     </div>
 
-    <a href="{{ route('products.index') }}" class="btn btn-secondary">Cancelar</a>
+    <a href="{{ route('products.customIndex') }}" class="btn btn-secondary">Cancelar</a>
     <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
 

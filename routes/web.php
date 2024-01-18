@@ -40,11 +40,11 @@ Route::get('/login', function () {
 
 
 /* Ruta para productos */
-Route::get('/products/index', [ProductController::class, 'index'])->name('products.index');
 // Ruta para mostrar el formulario de creación
-Route::get('products/create', [ProductController::class, 'create']);
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+
 // Ruta para procesar el almacenamiento
-Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');;
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 
 // Ruta para mostrar el formulario de edición
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
@@ -52,4 +52,5 @@ Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('pro
 // Ruta para procesar la actualización
 Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
 
-
+// Ruta para mostrar la lista de productos (con paginación y cantidad personalizada)
+Route::get('/products', [ProductController::class, 'customIndex'])->name('products.customIndex');
