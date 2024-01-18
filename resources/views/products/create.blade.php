@@ -2,17 +2,12 @@
 
 @section('crud_create')
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
+@include('success')
 
 <h2>Formulario para crear un producto</h2>
 
-<form action="{{ route('products.store') }}" method="post">
-    @method('post')
+<form action="{{ route('products.store', $product->id) }}" method="post" enctype="multipart/form-data">
+    @METHOD('POST')
     @csrf <!--Esto genera un token. Laravel sabe que es un tipo submit y no se va a explotar ninguna vulnerabilidad -->
     
     <div class="mb-3">

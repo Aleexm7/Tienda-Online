@@ -3,7 +3,7 @@
 
 
 @section('crud')
-
+@include('success')
 <a class="btn btn-primary mt-4" href="{{ URL('products/create') }}">Crear</a>
 
 <form method="get" action="{{ route('products.customIndex') }}" class="mt-2">
@@ -37,7 +37,7 @@
             <td>{{$product->stock}}</td>
 
             <td>
-                <a class="btn btn-info" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-pencil-alt"></i></a>
+                <a class="btn btn-warning" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-pencil-alt"></i></a>
                 <a class="btn btn-danger" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>

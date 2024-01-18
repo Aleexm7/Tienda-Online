@@ -2,12 +2,12 @@
 
 @section('crud_edit')
 
-
+@include('success')
 
 <h2>Editar Producto</h2>
 
-<form action="{{ route('products.edit', $product->id) }}" method="post">
-    @method('put')
+<form action="/products/{{$product->id}}" method="POST">
+    @method('PUT')
     @csrf <!-- Esto genera un token. Laravel sabe que es un tipo submit y no se va a explotar ninguna vulnerabilidad -->
     
     <div class="mb-3">

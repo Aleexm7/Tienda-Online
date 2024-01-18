@@ -23,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $product = new Product(); // O la lógica que uses para crear un nuevo producto
+        return view('products.create', compact('product'));
     }
 
     /**
@@ -31,23 +32,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        /* $request->validate([
             'product_name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
-        ]);
+        ]); */
 
        
     
-        // Utiliza el método create de Eloquent para crear y guardar un nuevo producto
+        /* // Utiliza el método create de Eloquent para crear y guardar un nuevo producto
         Product::create([
             'product_name' => $request->input('product_name'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'stock' => $request->input('stock'),
-        ]);
+        ]); */
+
+        $productos = new Product();
     
+        $productos->product_name = $request->get('product_name');
+        $productos->description = $request->get('description');
+        $productos->price = $request->get('price');
+        $productos->stock = $request->get('stock');
+
+        $productos->save();
+
         return redirect('/products')->with('success', 'Producto creado exitosamente.');
 
     }
@@ -63,23 +73,19 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
-    }
+    public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    return view('products.edit', compact('product'));
+}
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'product_name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'stock' => 'required|numeric',
-        ]);
+    
     
         $product = Product::findOrFail($id);
         $product->update($request->all());

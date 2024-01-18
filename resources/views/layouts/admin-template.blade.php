@@ -53,7 +53,7 @@
           Configuración
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Cuenta</a>
+          <a class="dropdown-item" href="{{ url('/dashboard') }}">Cuenta</a>
           <a class="dropdown-item" href="#">Cerrar sesión</a>
         </div>
       </div>

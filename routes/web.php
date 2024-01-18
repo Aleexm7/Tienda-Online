@@ -44,7 +44,7 @@ Route::get('/login', function () {
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 
 // Ruta para procesar el almacenamiento
-Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
 // Ruta para mostrar el formulario de edición
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
