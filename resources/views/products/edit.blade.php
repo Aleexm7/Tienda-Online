@@ -1,4 +1,4 @@
-@extends('layouts.admin-template')
+@extends('layouts.dashboardadmin')
 
 @section('crud_edit')
 
@@ -6,7 +6,7 @@
 
 <h2>Editar Producto</h2>
 
-<form action="/products/{{$product->id}}" method="POST">
+<form action="{{route('products.update', $product->id)}}" method="POST">
     @method('PUT')
     @csrf <!-- Esto genera un token. Laravel sabe que es un tipo submit y no se va a explotar ninguna vulnerabilidad -->
     

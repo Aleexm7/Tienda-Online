@@ -1,7 +1,90 @@
-body {
-    overflow: hidden;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+*{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+ header {
+    height: calc(24vh - 59.2px - 48px);
+} 
+
+.message-bar {
+    background-color: #fff;
 }
 
-i {
-    color: black;
+.fa-shopping-cart,
+.fa-user {
+    color: white;
+}
+
+.nav-link {
+    color: #fff;
+    font-size: 17px;
+}
+
+#navList li:not(:last-child) {
+    border-right: 2px solid white;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 35px;
+}
+
+#navList li:last-child{
+    padding-left: 15px;
+}
+
+#emailLinkFooter{
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.list-unstyled > li > a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.list-column-2{
+    margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.title-footer{
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.item{
+    font-size: 30px;
+    transition: opacity 1s ease-in-out;
+}
+/* Añadimos una clase para ocultar el texto gradualmente */
+.hidden {
+    opacity: 0;
+}
+
+
+ a{
+ text-decoration: none;
+
+}
+
+/* Esto pertenece a la section de hombres */
+span > a{
+    color: black; 
+}
+
+.nav-link-list:hover {
+    text-decoration: underline;
+}
+.nav-link-list.active {
+    /* Tamaño de fuente aumentado al pasar el cursor */
+    font-weight: 600;
+}
+
+.TitleProduct{
+    font-size: 14px;
 }

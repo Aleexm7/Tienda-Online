@@ -1,10 +1,11 @@
-@extends('layouts.admin-template');
+@extends('layouts.dashboardadmin');
 
 
 
 @section('crud')
 @include('success')
-<a class="btn btn-primary mt-4" href="{{ URL('products/create') }}">Crear</a>
+
+<a class="btn btn-primary mt-4" href="{{ URL('dashboardadmin/products/create') }}">Crear</a>
 
 <form method="get" action="{{ route('products.customIndex') }}" class="mt-2">
     <label for="cantidadRegistros">Mostrar:</label>

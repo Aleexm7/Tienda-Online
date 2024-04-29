@@ -1,4 +1,4 @@
-@extends('layouts.admin-template')
+@extends('layouts.dashboardadmin')
 
 @section('crud_create')
 
@@ -12,22 +12,22 @@
     
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input type="text" name="product_name" id="product_name" class="form-control">
+        <input type="text" name="product_name" id="product_name" class="form-control" required>
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Descripcion</label>
-        <input type="text" name="description" id="description" class="form-control">
+        <input type="text" name="description" id="description" class="form-control" required>
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Precio</label>
-        <input type="number" name="price" id="price" class="form-control">
+        <input type="number" name="price" id="price" class="form-control" required>
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Cantidad</label>
-        <input type="number" name="stock" id="stock" class="form-control">
+        <input type="number" name="stock" id="stock" class="form-control" required>
     </div>
 
-    <a href="/products/index" class="btn btn-secondary">Cancelar</a>
+    <a href="/dashboardadmin" class="btn btn-secondary">Cancelar</a>
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @endsection

@@ -15,7 +15,8 @@ class ProductController extends Controller
     public function index()
     {
        $products = Product::all();/* Hacemos referencia al modelo product, con all nos lista todos los registros */
-        return view('products.index')->with('products', $products);
+        
+       return view('products.index')->with('products', $products);
     }
 
     /**
@@ -58,7 +59,7 @@ class ProductController extends Controller
 
         $productos->save();
 
-        return redirect('/products')->with('success', 'Producto creado exitosamente.');
+        return redirect('/dashboardadmin')->with('success', 'Producto creado exitosamente.');
 
     }
 
@@ -90,7 +91,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update($request->all());
     
-        return redirect('/products')->with('success', 'Producto actualizado exitosamente.');
+        return redirect('/dashboardadmin')->with('success', 'Producto actualizado exitosamente.');
     }
 
     /**

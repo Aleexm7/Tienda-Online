@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+
+  admin_mysql2:
+    image: mysql:5.7
+    build: './mysql/'
+    container_name: admin_mysql2
+    environment:
+      MYSQL_USER: ale
+      MYSQL_PASSWORD: ale
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "33064:3306"
+    restart: always
+    networks:
+      - backend
+    volumes:
+      - ./dbdata:/var/lib/mysql
+
+  phpmyadmin2:
+   # Use phpmyadmin/phpmyadmin:5.0.2 image
+    image: phpmyadmin/phpmyadmin
+    # Connect to "my-network" network, as defined below
+    networks:
+      - backend
+    # Map port 8080 on the host to port 80 inside the container
+    # Syntax is: "HOST_PORT:CONTAINER_PORT"
+    ports:
+      - "5001:80"
+    # Pass a list of environment variables to the container
+    volumes:
+        - /sessions
+    environment:
+      PMA_HOST: admin_mysql2
+    # Wait for "mysql" container to start first 
+    depends_on:
+      - admin_mysql2
+
+  admin_apache2:
+    build: './apache/'
+    container_name: admin_apache2
+    depends_on:
+      - admin_mysql2
+    networks:
+      - frotend
+      - backend
+    ports:
+      - "8768:80"
+    volumes:
+      - ".:/var/www/html/"
+volumes:
+  mysql-data:
+
+networks:
+  frotend:
+  backend:

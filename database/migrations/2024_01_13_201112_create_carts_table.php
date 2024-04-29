@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('status', 20);
+            $table->float('price')->default(0);
             $table->timestamps();
         });
     }

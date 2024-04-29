@@ -21,6 +21,16 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                $user = Auth::guard($guard)->user(); // Obtenemos el usuario autenticado
+
+                // Redirigimos según el rol
+                if ($user->user_role == 'admin') {
+                    return redirect()->route('dashboardadmin');
+                } elseif ($user->user_role == 'customer') {
+                    return redirect()->route('welcome'); 
+                }
+
+                // En caso de rol no especificado, podríamos redirigir a home
                 return redirect(RouteServiceProvider::HOME);
             }
         }
