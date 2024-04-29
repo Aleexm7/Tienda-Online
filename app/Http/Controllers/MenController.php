@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use \App\Http\Models\Product;
+use App\Models\Product as ModelsProduct;
 
 class MenController extends Controller
 {
@@ -31,10 +32,16 @@ class MenController extends Controller
     }
 
     public function getSudaderas(){
-        return view('sections.menSudaderas');
+        $products = ModelsProduct::where('category', '=', 'Sudaderas')->get();
+        
+        
+        return view('sections.menSudaderas', compact('products'));
     }
 
     public function getSudaderasSinCapucha(){
-        return view('sections.menSudaderasSinCapucha');
+        $products = ModelsProduct::where('category', '=', 'Sudaderas Sin Capucha')->get();
+        
+        
+        return view('sections.menSudaderasSinCapucha', compact('products'));
     }
 }

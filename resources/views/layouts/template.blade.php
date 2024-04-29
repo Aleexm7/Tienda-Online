@@ -22,7 +22,7 @@
 <body>
     <!-- Aquí invocaremos a los section que no queramos que tengan navbar y footer -->
     @yield('general')   
-    
+    @yield('cartSection')
     
 </body>
 

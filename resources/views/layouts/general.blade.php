@@ -71,6 +71,7 @@
 @yield('menSudaderas')
 @yield('menSudaderaSinCapucha')
 
+
 <footer class="bg-black text-white mt-4">
     <div class="container py-5">
         <div class="row">

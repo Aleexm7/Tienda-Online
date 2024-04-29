@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\MenController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*
@@ -91,6 +92,13 @@ Route::get('/men/sudaderas', [App\Http\Controllers\MenController::class, 'getSud
 /*Ruta para mostrar las camisetas basicas */
 Route::get('/men/sudaderas/sin-capuchas', [App\Http\Controllers\MenController::class, 'getSudaderasSinCapucha'])->name('menSudaderaSinCapucha');
 
-
+/* RUTA PARA VER LOS PRODUCTOS AÑADIDO AL CARRITO */
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('ProductosCarrito');
 /* RUTA PARA LA FUNCIONALIDAD DEL CARRITO */
-Route::post('/agregar-al-carrito', [App\Http\Controllers\CartController::class, ''])->name('agregarCarrito');
+Route::post('/cart/add', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+
+Route::get('/cart/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
+
+Route::get('/cart/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('clear');
+
+Route::post('/cart/delete', [App\Http\Controllers\CartController::class, 'delete'])->name('delete');
