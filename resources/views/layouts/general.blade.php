@@ -64,7 +64,6 @@
 <!-- Aquí meteremos todos los section que sí queramos que tengan navbar y footer -->
 @yield('welcome')
 @yield('menSection')
-@yield('menTshirts')
 @yield('menTshirtsBasic')
 @yield('menTshirtsCropped')
 @yield('menTshirtsGraphic')

@@ -74,8 +74,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /*Ruta para mostrar menu principal de la section hombres */
 Route::get('/men', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
 
-/*Ruta para mostrar todas las camisetas */
-Route::get('/men/camisetas', [App\Http\Controllers\MenController::class, 'getAllTshirts'])->name('AllTshirt');
 
 /* Ruta para mostrar las camiseta cropped */
 Route::get('/men/camisetas/cropped', [App\Http\Controllers\MenController::class, 'getTshirtsCropped'])->name('menTshirtCropped');
@@ -86,10 +84,10 @@ Route::get('/men/camisetas/estampadas', [App\Http\Controllers\MenController::cla
 /*Ruta para mostrar las camisetas basicas */
 Route::get('/men/camisetas/basicas', [App\Http\Controllers\MenController::class, 'getTshirtsBasic'])->name('menTshirtBasic');
 
-/*Ruta para mostrar las camisetas basicas */
+/*Ruta para mostrar las sudaderas basicas */
 Route::get('/men/sudaderas', [App\Http\Controllers\MenController::class, 'getSudaderas'])->name('menSudaderas');
 
-/*Ruta para mostrar las camisetas basicas */
+/*Ruta para mostrar las sudaderas sin capuchas */
 Route::get('/men/sudaderas/sin-capuchas', [App\Http\Controllers\MenController::class, 'getSudaderasSinCapucha'])->name('menSudaderaSinCapucha');
 
 /* RUTA PARA VER LOS PRODUCTOS AÑADIDO AL CARRITO */

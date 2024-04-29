@@ -12,23 +12,29 @@ class MenController extends Controller
         return view('sections.men');
     }
 
-    public function getAllTshirts()
-    {
-        return view('sections.menTshirt');
-    }
+    
 
     public function getTshirtsBasic()
     {
-        return view('sections.menTshirtBasic');
+        $products = ModelsProduct::where('category', '=', 'Camisetas básicas')->get();
+        
+        
+        return view('sections.menTshirtBasic', compact('products'));
     }
 
     public function getTshirtsCropped()
     {
-        return view('sections.menTshirtCropped');
+        $products = ModelsProduct::where('category', '=', 'Camisetas cropped')->get();
+        
+        
+        return view('sections.menTshirtCropped', compact('products'));
     }
 
     public function getTshirtsGraphic(){
-        return view('sections.menTshirtGraphic');
+        $products = ModelsProduct::where('category', '=', 'Camisetas estampadas')->get();
+        
+        
+        return view('sections.menTshirtGraphic', compact('products'));
     }
 
     public function getSudaderas(){
