@@ -12,7 +12,6 @@ class MenController extends Controller
         return view('sections.men');
     }
 
-    
 
     public function getTshirtsBasic()
     {
@@ -49,5 +48,33 @@ class MenController extends Controller
         
         
         return view('sections.menSudaderasSinCapucha', compact('products'));
+    }
+
+    public function getPantalonesVaqueros(){
+        $products = ModelsProduct::where('category', '=', 'Pantalones vaquero')->get();
+        
+        
+        return view('sections.menPantalones', compact('products'));
+    }
+
+    public function getPantalonesBaggy(){
+        $products = ModelsProduct::where('category', '=', 'Pantalones baggy')->get();
+        
+        
+        return view('sections.menPantalonesBaggy', compact('products'));
+    }
+
+    public function getPantalonesCargo(){
+        $products = ModelsProduct::where('category', '=', 'Pantalones cargo')->get();
+        
+        
+        return view('sections.menPantalonesCargo', compact('products'));
+    }
+
+    public function getChaquetas(){
+        $products = ModelsProduct::where('category', '=', 'Chaquetas')->get();
+        
+        
+        return view('sections.menChaqueta', compact('products'));
     }
 }

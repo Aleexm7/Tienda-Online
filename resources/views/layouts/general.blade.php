@@ -24,12 +24,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Mujer</a>
                         </li>
-                        <!-- <li class="nav-item ms-4">
-                        <a class="nav-link" href="#">Promociones</a>
-                    </li>
-                    <li class="nav-item ms-4">
-                        <a class="nav-link" href="#">Ofertas</a>
-                    </li> -->
                     </ul>
                 </div>
                 <!-- Campo de búsqueda a la derecha -->
@@ -69,7 +63,10 @@
 @yield('menTshirtsGraphic')
 @yield('menSudaderas')
 @yield('menSudaderaSinCapucha')
-
+@yield('menPantalonesVaqueros')
+@yield('menPantalonesBaggy')
+@yield('menPantalonesCargo')
+@yield('menChaquetas')
 
 <footer class="bg-black text-white mt-4">
     <div class="container py-5">

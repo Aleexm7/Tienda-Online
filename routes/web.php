@@ -68,9 +68,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Ruta para mostrar el formulario de creación
 
 
-/* -------------- SECTION MEN --------------------*/
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/* -------------- SECTION MEN --------------------*/
 /*Ruta para mostrar menu principal de la section hombres */
 Route::get('/men', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
 
@@ -89,6 +90,18 @@ Route::get('/men/sudaderas', [App\Http\Controllers\MenController::class, 'getSud
 
 /*Ruta para mostrar las sudaderas sin capuchas */
 Route::get('/men/sudaderas/sin-capuchas', [App\Http\Controllers\MenController::class, 'getSudaderasSinCapucha'])->name('menSudaderaSinCapucha');
+
+/*Ruta para mostrar los pantalones vaqueros */
+Route::get('/men/pantalones', [App\Http\Controllers\MenController::class, 'getPantalonesVaqueros'])->name('menPantalones');
+
+/* Ruta para mostrar los pantalones baggy */
+Route::get('/men/pantalones/baggy', [App\Http\Controllers\MenController::class, 'getPantalonesBaggy'])->name('menPantalonesBaggy');
+
+/* Ruta para mostrar los pantalones cargo */
+Route::get('/men/pantalones/cargo', [App\Http\Controllers\MenController::class, 'getPantalonesCargo'])->name('menPantalonesCargo');
+
+/* Ruta para mostrar las chaquetas*/
+Route::get('/men/chaquetas', [App\Http\Controllers\MenController::class, 'getChaquetas'])->name('menChaquetas');
 
 /* RUTA PARA VER LOS PRODUCTOS AÑADIDO AL CARRITO */
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('ProductosCarrito');

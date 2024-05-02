@@ -4,12 +4,13 @@
 
 <div class="container">
     <div class="d-flex flex-row mt-2">
+        <span class="p-2 ms-2"><a href="{{ route('menSection')}}" class="nav-link-list">Volver</a></span>
         <span class="p-2 ms-2"><a href="{{ route('menTshirtBasic')}}" class="nav-link-list">Básicas</a></span>
         <span class="p-2 ms-2"><a href="{{ route('menTshirtCropped')}}" class="nav-link-list active">Cropped</a></span>
         <span class="p-2 ms-2"><a href="{{ route('menTshirtGraphic')}}" class="nav-link-list">Estampadas</a></span>
     </div>
     <div class="row mt-4">
-    @foreach($products as $product)
+        @foreach($products as $product)
         <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="{{ asset('/assets/img/products/men/camisetas/camisetasCropped'. $loop->index+1 .'.webp') }}">
@@ -40,7 +41,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+        @endforeach
     </div>
 </div>
 @endsection
