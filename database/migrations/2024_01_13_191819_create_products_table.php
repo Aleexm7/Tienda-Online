@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('stock');
             $table->string('image')->nullable();
             $table->string('category');
-            $table->string('size');
         
         });
     }

@@ -9,7 +9,12 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'stock', 'image', 'category', 'size'];
+    protected $fillable = ['nombre', 'precio', 'stock', 'imagen', 'categoria'];
+
+    public function tallas()
+    {
+        return $this->belongsToMany(Size::class, 'product_size');
+    }
 
     public $timestamps = false; // Indica a Eloquent que no gestione las columnas timestamps
 
@@ -17,4 +22,6 @@ class Product extends Model
     {
         return $this->belongsToMany(CartModel::class, 'cart_product');
     }
+
+    
 }

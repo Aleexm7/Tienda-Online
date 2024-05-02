@@ -8,7 +8,7 @@
         <span class="p-2 ms-2"><a href="{{ route('menSudaderaSinCapucha')}}" class="nav-link-list">Sudaderas sin capucha</a></span>
     </div>
     <div class="row mt-4">
-
+        @include('alerts.msg')
         @foreach($products as $product)
         <div class="col-md-4 mb-4">
             <div class="card">
@@ -19,14 +19,11 @@
                         <h5 class="mb-0">{{$product->price}}€</h5>
                         <div class="d-flex align-items-center">
                             <div class="mr-2">
-                                <select class="form-select form-select-sm">
-                                    <option selected disabled>Talla</option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
+                            <select class="form-select form-select-sm">
+                                @foreach ($product->tallas as $talla)
+                                    <option value="{{ $talla->id }}">{{ $talla->size }}</option>
+                                @endforeach
+                            </select>
                             </div>
                             <form action="{{ route('add') }}" method="post">
                                 @csrf
