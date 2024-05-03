@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Cart;
 
 class CartProductModel extends Model
 {
@@ -14,7 +15,7 @@ class CartProductModel extends Model
     // Define la relación con el modelo Cart
     public function cart()
     {
-        return $this->belongsTo(CartModel::class);
+        return $this->belongsTo(Cart::class);
     }
 
     // Define la relación con el modelo Product

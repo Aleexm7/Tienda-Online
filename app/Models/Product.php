@@ -9,18 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'precio', 'stock', 'imagen', 'categoria'];
+    /* protected $table = 'products'; */
+    protected $fillable = ['name', 'price', 'stock', 'image', 'category'];
 
     public function tallas()
     {
-        return $this->belongsToMany(Size::class, 'product_size');
+        return $this->belongsToMany(Size::class, 'product_sizes', 'product_id', 'size_id')->withTimestamps();
     }
-
-    public $timestamps = false; // Indica a Eloquent que no gestione las columnas timestamps
 
     public function carts()
     {
-        return $this->belongsToMany(CartModel::class, 'cart_product');
+        return $this->belongsToMany(Cart::class, 'cart_product');
     }
 
     

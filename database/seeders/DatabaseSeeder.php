@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-Use App\Models\Size;
+use App\Models\Size;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             ['size' => 'M'],
             ['size' => 'L'],
             ['size' => 'XL'],
-            
+
         ];
 
         DB::table('sizes')->insert($tallas);
@@ -418,6 +418,26 @@ class DatabaseSeeder extends Seeder
 
         foreach ($products as $product) {
             DB::table('products')->insert($product);
+        }
+
+        // Array de relaciones entre productos y tamaños
+        $productSizes = [];
+        $products = DB::table('products')->pluck('id')->toArray();
+        $sizes = DB::table('sizes')->pluck('id')->toArray();
+
+        foreach ($products as $product_id) {
+            foreach ($sizes as $size_id) {
+                $productSizes[] = [
+                    'product_id' => $product_id,
+                    'size_id' => $size_id,
+                ];
+            }
+        }
+
+        
+        // Inserta las combinaciones en la tabla product_sizes
+        foreach ($productSizes as $productSize) {
+            DB::table('product_sizes')->insert($productSize);
         }
 
 

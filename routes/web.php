@@ -72,42 +72,48 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /* -------------- SECTION MEN --------------------*/
-/*Ruta para mostrar menu principal de la section hombres */
-Route::get('/men', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
 
+Route::prefix('men')->group(function () {
+
+/*Ruta para mostrar menu principal de la section hombres */
+Route::get('/', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
 
 /* Ruta para mostrar las camiseta cropped */
-Route::get('/men/camisetas/cropped', [App\Http\Controllers\MenController::class, 'getTshirtsCropped'])->name('menTshirtCropped');
+Route::get('/camisetas/cropped', [App\Http\Controllers\MenController::class, 'getTshirtsCropped'])->name('menTshirtCropped');
 
 /* Ruta para mostrar las camisetas estampadas */
-Route::get('/men/camisetas/estampadas', [App\Http\Controllers\MenController::class, 'getTshirtsGraphic'])->name('menTshirtGraphic');
+Route::get('/camisetas/estampadas', [App\Http\Controllers\MenController::class, 'getTshirtsGraphic'])->name('menTshirtGraphic');
 
 /*Ruta para mostrar las camisetas basicas */
-Route::get('/men/camisetas/basicas', [App\Http\Controllers\MenController::class, 'getTshirtsBasic'])->name('menTshirtBasic');
+Route::get('/camisetas/basicas', [App\Http\Controllers\MenController::class, 'getTshirtsBasic'])->name('menTshirtBasic');
 
 /*Ruta para mostrar las sudaderas basicas */
-Route::get('/men/sudaderas', [App\Http\Controllers\MenController::class, 'getSudaderas'])->name('menSudaderas');
+Route::get('/sudaderas', [App\Http\Controllers\MenController::class, 'getSudaderas'])->name('menSudaderas');
 
 /*Ruta para mostrar las sudaderas sin capuchas */
-Route::get('/men/sudaderas/sin-capuchas', [App\Http\Controllers\MenController::class, 'getSudaderasSinCapucha'])->name('menSudaderaSinCapucha');
+Route::get('/sudaderas/sin-capuchas', [App\Http\Controllers\MenController::class, 'getSudaderasSinCapucha'])->name('menSudaderaSinCapucha');
 
 /*Ruta para mostrar los pantalones vaqueros */
-Route::get('/men/pantalones', [App\Http\Controllers\MenController::class, 'getPantalonesVaqueros'])->name('menPantalones');
+Route::get('/pantalones', [App\Http\Controllers\MenController::class, 'getPantalonesVaqueros'])->name('menPantalones');
 
 /* Ruta para mostrar los pantalones baggy */
-Route::get('/men/pantalones/baggy', [App\Http\Controllers\MenController::class, 'getPantalonesBaggy'])->name('menPantalonesBaggy');
+Route::get('/pantalones/baggy', [App\Http\Controllers\MenController::class, 'getPantalonesBaggy'])->name('menPantalonesBaggy');
 
 /* Ruta para mostrar los pantalones cargo */
-Route::get('/men/pantalones/cargo', [App\Http\Controllers\MenController::class, 'getPantalonesCargo'])->name('menPantalonesCargo');
+Route::get('/pantalones/cargo', [App\Http\Controllers\MenController::class, 'getPantalonesCargo'])->name('menPantalonesCargo');
 
 /* Ruta para mostrar las chaquetas*/
-Route::get('/men/chaquetas', [App\Http\Controllers\MenController::class, 'getChaquetas'])->name('menChaquetas');
+Route::get('/chaquetas', [App\Http\Controllers\MenController::class, 'getChaquetas'])->name('menChaquetas');
+
+Route::post('/sudaderas/add', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+
+});
+
+
 
 /* RUTA PARA VER LOS PRODUCTOS AÑADIDO AL CARRITO */
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('ProductosCarrito');
 /* RUTA PARA LA FUNCIONALIDAD DEL CARRITO */
-Route::post('/cart/add', [App\Http\Controllers\CartController::class, 'add'])->name('add');
-
 Route::get('/cart/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 
 Route::get('/cart/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('clear');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\Size;
 class ProductController extends Controller
 {
    /**
@@ -111,6 +111,20 @@ class ProductController extends Controller
         $products = Product::paginate($cantidadRegistros);
 
         return view('products.index')->with('products', $products);
+    }
+
+
+    public function addSize($productoId, $tallaId)
+    {
+        $product = Product::find($productoId);
+        $size = Size::find($tallaId);
+
+        if ($product && $size) {
+            $product->tallas()->attach($tallaId);
+            return redirect()->back()->with('success', 'Talla agregada correctamente al producto.');
+        } else {
+            return redirect()->back()->with('error', 'No se pudo encontrar el producto o la talla.');
+        }
     }
 
 
