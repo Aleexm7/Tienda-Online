@@ -22,7 +22,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="mr-2">
                                     <select class="form-select form-select-sm" name="size_id">
-                                        @foreach ($sizes as $size)
+                                        <option value="">Talla</option>
+                                        @foreach ($product->sizes as $size)
                                         <option value="{{ $size->id }}">{{ $size->size }}</option>
                                         @endforeach
                                     </select>

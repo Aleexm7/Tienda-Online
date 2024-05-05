@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->float('price', 10,2);
-            $table->integer('stock');
             $table->string('image')->nullable();
             $table->string('category');
-        
+            $table->integer('total_stock');
+            $table->timestamps();
         });
     }
 

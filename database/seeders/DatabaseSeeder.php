@@ -9,6 +9,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Size;
+use App\Models\Product;
+use App\Models\ProductSize;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,405 +20,367 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $tallas = [
-            ['size' => 'S'],
-            ['size' => 'M'],
-            ['size' => 'L'],
-            ['size' => 'XL'],
-
-        ];
-
-        DB::table('sizes')->insert($tallas);
-
 
         $products = [
             [
                 'name' => 'Sudadera gris not a fan',
                 'price' => 70,
-                'stock' => 50,
                 'image' => 'sudadera1.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera azul marino not a fan',
                 'price' => 70,
-                'stock' => 30,
                 'image' => 'sudadera2.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera ash sherry',
                 'price' => 70,
-                'stock' => 40,
                 'image' => 'sudadera3.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera negra sherry',
                 'price' => 70,
-                'stock' => 20,
                 'image' => 'sudadera4.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera boxy azul kory',
                 'price' => 70,
-                'stock' => 25,
                 'image' => 'sudadera5.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera boxy ash kory',
                 'price' => 70,
-                'stock' => 35,
                 'image' => 'sudadera6.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera boxy azul',
                 'price' => 70,
-                'stock' => 60,
                 'image' => 'sudadera7.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Sudadera boxy ice grey',
                 'price' => 70,
-                'stock' => 45,
                 'image' => 'sudadera8.webp',
                 'category' => 'Sudaderas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Balear crewneck off-white',
                 'price' => 70,
-                'stock' => 15,
                 'image' => 'sudaderaSinCapucha1.webp',
                 'category' => 'Sudaderas Sin Capucha',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Balear crewneck pale blue',
                 'price' => 70,
-                'stock' => 55,
                 'image' => 'sudaderaSinCapucha2.webp',
                 'category' => 'Sudaderas Sin Capucha',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Overdyed crewneck green',
                 'price' => 70,
-                'stock' => 55,
                 'image' => 'sudaderaSinCapucha3.webp',
                 'category' => 'Sudaderas Sin Capucha',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Lil boat crewneck navy',
                 'price' => 70,
-                'stock' => 55,
                 'image' => 'sudaderaSinCapucha4.webp',
                 'category' => 'Sudaderas Sin Capucha',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta verde origins',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas1.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta marshmallow origins',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas2.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta azul marino origins',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas3.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta ash origins',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas5.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta tirantes básicas x2 negra',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas6.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta tirantes básicas x2 khaki/verde',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas7.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta tirantes básicas x2 naranja/lima',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasBasicas8.webp',
                 'category' => 'Camisetas básicas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta boxy fit ash',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasCropped1.webp',
                 'category' => 'Camisetas cropped',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta lilac cropped bacano',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasCropped2.webp',
                 'category' => 'Camisetas cropped',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta blanca cropped frist class',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasCropped3.webp',
                 'category' => 'Camisetas croppeds',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta ash cropped costa',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasCropped4.webp',
                 'category' => 'Camisetas cropped',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta blanca cropped bacano',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasCropped5.webp',
                 'category' => 'Camisetas cropped',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta blanca cropped costa',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetasCropped6.webp',
                 'category' => 'Camisetas cropped',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta azul virginity',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas1.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta verde locally hated',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas2.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta azul marino locally hated',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas3.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta blanca locally hated',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas4.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta ash first class',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas5.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta negra sherry',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas6.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Camiseta off-white summer tour',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'camisetas7.webp',
                 'category' => 'Camisetas estampadas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón vaquero azul',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesVaquero1.webp',
                 'category' => 'Pantalones vaquero',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón vaquero azul washed',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesVaquero2.webp',
                 'category' => 'Pantalones vaquero',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón vaquero negro',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesVaquero3.webp',
                 'category' => 'Pantalones vaquero',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón vaquero raw',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesVaquero4.webp',
                 'category' => 'Pantalones vaquero',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón vaquero trademark',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesVaquero5.webp',
                 'category' => 'Pantalones vaquero',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón baggy azul old',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesBaggy2.webp',
                 'category' => 'Pantalones baggy',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón baggy sand dust old',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesBaggy1.webp',
                 'category' => 'Pantalones baggy',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón cargo ash army',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesCargo1.webp',
                 'category' => 'Pantalones cargo',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón cargo verde army',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesCargo2.webp',
                 'category' => 'Pantalones cargo',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Pantalón cargo verde oscuro',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'pantalonesCargo2.webp',
                 'category' => 'Pantalones cargo',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => '"LA "Bomber jacket',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'chaquetas1.webp',
                 'category' => 'Chaquetas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Jewel zip up jacket',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'chaquetas2.webp',
                 'category' => 'Chaquetas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Carpenter jacket brown',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'chaquetas3.webp',
                 'category' => 'Chaquetas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Soft shell boxy jacket beige',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'chaquetas4.webp',
                 'category' => 'Chaquetas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Trademark denim jacket',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'chaquetas5.webp',
                 'category' => 'Chaquetas',
-
+                'total_stock' => 200,
             ],
             [
                 'name' => 'Soft shell boxy jacket neon',
                 'price' => 40,
-                'stock' => 55,
                 'image' => 'chaquetas6.webp',
                 'category' => 'Chaquetas',
-
+                'total_stock' => 200,
             ],
         ];
 
-        foreach ($products as $product) {
+        foreach ($products as $productData) {
+            $product = Product::create($productData);
+
+           
+            $sizes = ['S', 'M', 'L','XL'];
+            $stockPerSize = 50;
+            foreach ($sizes as $size) { 
+                ProductSize::create([
+                    'product_id' => $product->id,
+                    'size' => $size,
+                    'stock' => $stockPerSize
+                ]);
+
+                // Actualiza el stock total del producto
+                $product->total_stock += $stockPerSize;
+            }
+
+            $product->save(); 
+        }
+
+       /*  foreach ($products as $product) {
             DB::table('products')->insert($product);
         }
 
@@ -440,7 +404,7 @@ class DatabaseSeeder extends Seeder
             DB::table('product_sizes')->insert($productSize);
         }
 
-
+ */
         //Seeder para usuarios
 
         $users = [

@@ -9,13 +9,18 @@ class Product extends Model
 {
     use HasFactory;
 
-    /* protected $table = 'products'; */
-    protected $fillable = ['name', 'price', 'stock', 'image', 'category'];
 
-    public function tallas()
+    /* protected $table = 'products'; */
+    protected $fillable = ['name', 'price', 'image', 'category', 'stock_total'];
+
+    public function sizes()
+    {
+        return $this->hasMany(ProductSize::class);
+    }
+    /* public function tallas()
     {
         return $this->belongsToMany(Size::class, 'product_sizes', 'product_id', 'size_id')->withTimestamps();
-    }
+    } */
 
     public function carts()
     {

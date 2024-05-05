@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product as ModelsProduct;
-use App\Models\Size;
+use App\Models\ProductSize;
 
 class MenController extends Controller
 {
@@ -39,8 +39,8 @@ class MenController extends Controller
     public function getSudaderas(){
         // Obtener todas las sudaderas con sus tallas asociadas
         
-        $products = ModelsProduct::with('tallas')->where('category', '=', 'Sudaderas')->get();
-        $sizes = Size::all();
+        $products = ModelsProduct::where('category', '=', 'Sudaderas')->get();
+        $sizes = ProductSize::all();
 
         return view('sections.menSudaderas', compact('products','sizes'));
     }

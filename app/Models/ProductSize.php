@@ -9,13 +9,15 @@ class ProductSize extends Model
 {
     use HasFactory;
 
-    public function carts()
+
+    public function product()
     {
-        return $this->belongsToMany(Cart::class, 'cart_product');
+        return $this->belongsTo(Product::class);
+    }
+     public function carts()
+    {
+        return $this->belongsToMany(Cart::class, 'cart_products');
     }
 
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'cart_product');
-    }
+    
 }

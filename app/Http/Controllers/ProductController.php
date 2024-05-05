@@ -102,30 +102,10 @@ class ProductController extends Controller
         //
     }
 
-    public function customIndex(Request $request){
-        $cantidadRegistros = $request->input('show', 5);
-
-        // Asegúrate de que $cantidadRegistros sea un número válido
-        $cantidadRegistros = in_array($cantidadRegistros, [5, 10, 20]) ? $cantidadRegistros : 5;
-
-        $products = Product::paginate($cantidadRegistros);
-
-        return view('products.index')->with('products', $products);
-    }
+    
 
 
-    public function addSize($productoId, $tallaId)
-    {
-        $product = Product::find($productoId);
-        $size = Size::find($tallaId);
-
-        if ($product && $size) {
-            $product->tallas()->attach($tallaId);
-            return redirect()->back()->with('success', 'Talla agregada correctamente al producto.');
-        } else {
-            return redirect()->back()->with('error', 'No se pudo encontrar el producto o la talla.');
-        }
-    }
+   
 
 
 }

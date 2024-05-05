@@ -8,8 +8,7 @@ use App\Models\Size;
 use App\Models\Cart;
 use App\Models\ProductSize;
 use Illuminate\Support\Facades\DB;
-
-
+use PhpParser\Node\Expr\Instanceof_;
 
 class CartController extends Controller
 {
@@ -25,6 +24,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+         /* dd($request->all()); */
         // Obtener los IDs del producto y la talla
         $productId = $request->input('product_id');
         $sizeId = $request->input('size_id');
@@ -39,7 +39,7 @@ class CartController extends Controller
         if ($productSize) {
 
             DB::table('cart_products')->insert([
-                'product_size_id' => $productSize->product_size_id,
+                'product_size_id' => $productSize->id,
                 'quantity' => 1
             ]);
 
