@@ -4,20 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Size;
+use App\Models\ProductSize;
+
 class ProductController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-       $products = Product::all();/* Hacemos referencia al modelo product, con all nos lista todos los registros */
+        $products = Product::all();
         
-       return view('products.index')->with('products', $products);
+        return view('products.index', compact('products'));
     }
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,8 +43,8 @@ class ProductController extends Controller
             'stock' => 'required|numeric',
         ]); */
 
-       
-    
+
+
         /* // Utiliza el método create de Eloquent para crear y guardar un nuevo producto
         Product::create([
             'product_name' => $request->input('product_name'),
@@ -51,7 +54,7 @@ class ProductController extends Controller
         ]); */
 
         $productos = new Product();
-    
+
         $productos->product_name = $request->get('product_name');
         $productos->description = $request->get('description');
         $productos->price = $request->get('price');
@@ -60,7 +63,6 @@ class ProductController extends Controller
         $productos->save();
 
         return redirect('/dashboardadmin')->with('success', 'Producto creado exitosamente.');
-
     }
 
     /**
@@ -75,10 +77,10 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-{
-    $product = Product::findOrFail($id);
-    return view('products.edit', compact('product'));
-}
+    {
+        $product = Product::findOrFail($id);
+        return view('products.edit', compact('product'));
+    }
 
 
     /**
@@ -86,11 +88,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-    
-    
+
+
         $product = Product::findOrFail($id);
         $product->update($request->all());
-    
+
         return redirect('/dashboardadmin')->with('success', 'Producto actualizado exitosamente.');
     }
 
@@ -99,13 +101,16 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
     }
 
-    
 
 
-   
+    public function countStock(string $id)
+    {
+        $product = ProductSize::all();
 
-
+        return view('admin.dashboard', compact('countStock'));
+    }
 }

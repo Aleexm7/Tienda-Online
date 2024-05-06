@@ -7,12 +7,13 @@
         <span class="p-2 ms-2"><a href="{{ route('menSudaderas') }}" class="nav-link-list active">Sudaderas</a></span>
         <span class="p-2 ms-2"><a href="{{ route('menSudaderaSinCapucha')}}" class="nav-link-list">Sudaderas sin capucha</a></span>
     </div>
-    <form action="{{ route('add') }}" method="post">
-        @csrf
-        <div class="row mt-4">
-            @include('alerts.msg')
-            @foreach($products as $product)
-            <div class="col-md-4 mb-4">
+ 
+    <div class="row mt-4">
+        @include('alerts.msg')
+        @foreach($products as $product)
+        <div class="col-md-4 mb-4">
+            <form action="{{ route('add') }}" method="post">
+                @csrf <!-- Token CSRF dentro del formulario -->
                 <div class="card">
                     <img src="{{ asset('/assets/img/products/men/sudaderas/sudadera'. $loop->index+1 .'.webp') }}" alt="SUDADERA BOXY AZUL">
                     <div class="card-body">
@@ -22,7 +23,6 @@
                             <div class="d-flex align-items-center">
                                 <div class="mr-2">
                                     <select class="form-select form-select-sm" name="size_id">
-                                        <option value="">Talla</option>
                                         @foreach ($product->sizes as $size)
                                         <option value="{{ $size->id }}">{{ $size->size }}</option>
                                         @endforeach
@@ -36,9 +36,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
+            </form>
         </div>
-    </form>
+        @endforeach
+    </div>
 </div>
 @endsection

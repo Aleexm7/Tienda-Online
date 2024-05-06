@@ -10,7 +10,7 @@ class CartProductModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'cart_product';
+    protected $table = 'cart_products';
 
     // Define la relación con el modelo Cart
     public function cart()
@@ -18,9 +18,9 @@ class CartProductModel extends Model
         return $this->belongsTo(Cart::class);
     }
 
-    // Define la relación con el modelo Product
-    public function product()
+    // Define la relación con el modelo ProductSize
+    public function productSize()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(ProductSize::class);
     }
 }
