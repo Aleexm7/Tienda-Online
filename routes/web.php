@@ -118,4 +118,6 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
     Route::get('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('clear');
 
     Route::post('/delete', [App\Http\Controllers\CartController::class, 'delete'])->name('delete');
+
+    Route::post('/update-stock', [App\Http\Controllers\CartController::class, 'updateStock'])->name('UpdateStock');
 });

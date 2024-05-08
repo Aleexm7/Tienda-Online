@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('client_id')->references('id')->on('users');
             $table->date('order_date');
             $table->decimal('total', 10, 2);
+            $table->decimal('iva', 10, 2)->default(0.21); // IVA 21%
             $table->enum('status', ['pending', 'completed', 'canceled'])->default('pending');
-            
         });
     }
 

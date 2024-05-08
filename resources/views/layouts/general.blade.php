@@ -34,8 +34,8 @@
 
                 <!-- Iconos a la derecha -->
                 <div class="d-flex align-items-center ms-3">
-                    <i class="fas fa-shopping-cart"></i>
                     @if(auth()->user())
+                    <a href="{{route('ProductosCarrito')}}"><i class="fas fa-shopping-cart"></i></a>
                     <span class="text-light">{{auth()->user()->name}}</span>
                     <a href="{{ route('logout') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
                     @else
@@ -67,6 +67,7 @@
 @yield('menPantalonesBaggy')
 @yield('menPantalonesCargo')
 @yield('menChaquetas')
+
 
 <footer class="bg-black text-white mt-4">
     <div class="container py-5">
