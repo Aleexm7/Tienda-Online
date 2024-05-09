@@ -42,16 +42,16 @@ class CartController extends Controller
             ->select('cart_products.quantity')
             ->get();
         /* dd($quantityProduct); */
-    
+
         $quantities = [];
 
         // Recorrer cada cantidad para almacenarla en el array
         foreach ($quantityProduct as $quantity) {
             $quantities[] = $quantity->quantity;
         }
-        
-        
-       
+
+
+
         // Array asociativo que mapea las categorías de productos con los nombres de las subcarpetas de imágenes
         $categoryImageFolders = [
             'Sudaderas' => 'sudaderas',
@@ -108,52 +108,8 @@ class CartController extends Controller
         }
     }
 
-    public function updateStock()
+    public function checkout()
     {
-
-        $userId = Auth::user()->id;
-
-        // Obtener el carrito del usuario
-        $cart = Cart::where('user_id', $userId)->first();
-
-        // Obtener los productos del carrito junto con sus tamaños y detalles
-        $cartProducts = CartProductModel::where('cart_id', $cart->id)->get();
-
-        $cartProducts = DB::table('carts')
-            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
-            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
-            ->join('products', 'product_sizes.product_id', '=', 'products.id')
-            ->where('carts.user_id', $userId)
-            ->select('products.id as product_id', 'product_sizes.id as size_id', 'cart_products.quantity as quantity')
-            ->get();
-
-
-
-        foreach ($cartProducts as $cartProduct) {
-
-            $productSize = ProductSize::find($cartProduct->size_id);
-
-
-            // Restar la cantidad del carrito del stock de la talla
-            $productSize->stock -= $cartProduct->quantity;
-
-            $productSize->save();
-
-            // Actualizar el stock total del producto
-            $product = Product::find($cartProduct->product_id);
-            $product->total_stock -= $cartProduct->quantity;
-            $product->save();
-
-
-            /* foreach ($cart as $cartProduct) {
-            $product = Product::find($cartProduct->id);
-            dd($product);
-            $productSize = ProductSize::where('product_id', $cartProduct->product_id)
-                ->where('size', $cartProduct->product_size)
-                ->first();
-        } */
-
-            return redirect()->back()->with('stock_updated', 'Stock updated successfully!');
-        }
+        return view('sections.checkout');
     }
 }

@@ -8,10 +8,8 @@
     <div class="row">
       <div class="card">
         <div class="card-body p-4">
-
           <h5 class="mb-3"><a href="{{route('home')}}" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
           <hr>
-
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
               <p class="mb-1">Shopping cart</p>
@@ -21,13 +19,8 @@
               <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
             </div>
           </div>
-
-          <form action="{{ route('UpdateStock') }}" method="post">
-            @csrf
-            @method('PUT')
-            @foreach ($cartProducts as $key => $cartProduct)
-
             <div class="card mb-3">
+              @foreach ($cartProducts as $key => $cartProduct)
               <div class="card-body">
                 <div class="d-flex justify-content-between">
                   <div class="d-flex flex-row align-items-center">
@@ -39,32 +32,33 @@
                       <p class="small mb-0">{{$cartProduct->product_size}}</p>
                     </div>
                   </div>
-                  <div class="d-flex flex-row align-items-center">
-                    <div style="width: 80px;">
-                      <h5 class="mb-0">{{$cartProduct->product_price}}</h5>
-                    </div>
+                  <div class="d-flex justify-content-end align-items-center">
                     <div>
-                      
-                      <!-- Mostrar solo la cantidad de este producto -->
-                      @if(isset($quantities[$key]))
-                            <p>Cantidad: {{ $quantities[$key] }}</p>
-                        @endif
-                      
+                      <h5>{{$cartProduct->product_price}}€</h5>
                     </div>
-                    <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                    <div class="input-group mx-3">
+                      <span class="input-group-text" style="cursor: pointer;" onclick="decreaseQuantity($key)">-</span>
+
+                      <input type="hidden" id="quantity_input_{{ $key }}" name="quantity_{{ $key }}" value="{{ $quantities[$key] ?? 0 }}">
+
+                      @if(isset($quantities[$key]))
+                      <p class="mx-2" id="quantity_display_{{ $key }}">{{ $quantities[$key] }}</p>
+                      @endif
+                      <!-- Icono de "+" -->
+                      <span class="input-group-text" style="cursor: pointer;" onclick="increaseQuantity($key)">+</span>
+                    </div>
                   </div>
+                  <a href="#!" style="color: red;"><i class="fas fa-trash-alt ms-2"></i></a>
                 </div>
               </div>
-            </div>
-
-            @endforeach
-
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-          </form>
+              @endforeach
+              <a href="{{route('checkout')}}" class="btn btn-primary btn-lg btn-block">Continue to checkout</a>
         </div>
       </div>
     </div>
   </div>
+  </div>
 </section>
+
 
 @endsection
