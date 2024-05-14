@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\MenController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::get('/profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/count-product', [CartController::class, 'countProductsInCart'])->name('countProductsInCart');
+    
 });
 
 Route::middleware('role:customer')->get('/home', [WelcomeController::class, 'index'])->name('inicio');
@@ -112,10 +115,11 @@ Route::prefix('men')->group(function () {
 Route::middleware(['auth'])->prefix('cart')->group(function () {
     /* RUTA PARA VER LOS PRODUCTOS AÑADIDO AL CARRITO */
     Route::get('/', [App\Http\Controllers\CartController::class, 'index'])->name('ProductosCarrito');
-    /* RUTA PARA LA FUNCIONALIDAD DEL CARRITO */
+    /* RUTAS PARA LA FUNCIONALIDADES DEL CARRITO */
     Route::get('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('clear');
 
-    Route::post('/delete', [App\Http\Controllers\CartController::class, 'delete'])->name('delete');
+    Route::delete('/remove/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 
     Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
+
 });

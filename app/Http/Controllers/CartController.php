@@ -30,8 +30,9 @@ class CartController extends Controller
             ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
             ->join('products', 'product_sizes.product_id', '=', 'products.id')
             ->where('carts.user_id', $userId)
-            ->select('products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category')
+            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category')
             ->get();
+
 
 
 
@@ -89,6 +90,7 @@ class CartController extends Controller
         $cart = Cart::where('user_id', $userId)->first();
         $cartId = $cart->id;
 
+
         // Buscar la combinación de producto y talla
         $productSize = Product::find($productId)->sizes()->where('id', $sizeId)->first();
 
@@ -112,4 +114,60 @@ class CartController extends Controller
     {
         return view('sections.checkout');
     }
+
+    public function removeFromCart(Request $request)
+    {
+        // Obtener el id del producto a eliminar del carrito
+        $productId = $request->input('id');
+        
+        // Obtener el id del usuario autenticado
+        $userId = Auth::user()->id;
+
+        $cartProduct = DB::table('carts')
+        ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
+        ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
+        ->join('products', 'product_sizes.product_id', '=', 'products.id')
+        ->where('carts.user_id', $userId)
+        ->where('products.id', $productId)
+        ->select('cart_products.*')
+        ->first();
+
+        
+        if ($cartProduct) {
+            // Eliminar el producto del carrito
+            DB::table('cart_products')->where('id', $cartProduct->id)->delete();
+
+    
+            // Redirigir de vuelta con un mensaje de éxito
+            return redirect()->back()->with('success', 'Producto eliminado del carrito exitosamente.');
+        } else {
+            // El producto no existe en el carrito
+            return redirect()->back()->with('error', 'El producto no existe en el carrito.');
+        }
+    }
+
+
+    public function countProductsInCart()
+    {
+        
+        $userId = Auth::id();
+
+        
+        $cart = Cart::where('user_id', $userId)->first();
+
+        $cartProducts = DB::table('carts')
+            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
+            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
+            ->join('products', 'product_sizes.product_id', '=', 'products.id')
+            ->where('carts.user_id', $userId)
+            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category')
+            ->get();
+
+            $totalProducts = $cartProducts->count();
+        
+
+        
+        return view('layouts.general', compact('totalProducts'));
+    }
+
 }

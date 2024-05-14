@@ -33,20 +33,24 @@
                 </form>
 
                 <!-- Iconos a la derecha -->
-                <div class="d-flex align-items-center ms-3">
+                <div class="d-flex align-items-center ms-3 position-relative">
                     @if(auth()->user())
-                    <a href="{{route('ProductosCarrito')}}"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="{{route('ProductosCarrito')}}" class="cart-icon me-3">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">{{ $totalProducts }}</span>
+                    </a>
                     <span class="text-light">{{auth()->user()->name}}</span>
                     <a href="{{ route('logout') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
                     @else
                     <a href="{{ route('login') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
                     @endif
                 </div>
+
             </div>
         </div>
     </nav>
 
-   <!--  <div class="fixed-top mt-5">
+    <!--  <div class="fixed-top mt-5">
         <div class="d-flex justify-content-center mt-2 message-bar py-2">
             <a>ENVÍO GRATIS: NACIONAL MAYOR A 100€ | INTERNACIONAL MAYOR A 200€</a>
         </div>

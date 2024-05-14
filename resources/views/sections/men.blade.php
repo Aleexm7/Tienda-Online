@@ -47,22 +47,22 @@
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
             <div class="card">
-                <img src="{{ asset('/assets/img/products/men/pantalones/pantalones1.webp') }}" alt="pantalones">
+                <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesBaggy1.webp') }}" alt="pantalones baggy 1">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
             <div class="card">
-                <img src="{{ asset('/assets/img/products/men/pantalones/pantalones2.webp') }}" alt="pantalones">
+                <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesBaggy2.webp') }}" alt="pantalones baggy 2">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
             <div class="card">
-                <img src="{{ asset('/assets/img/products/men/pantalones/pantalones3.webp') }}" alt="pantalones">
+                <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesCargo1.webp') }}" alt="pantalones cargo 1">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
             <div class="card">
-                <img src="{{ asset('/assets/img/products/men/pantalones/pantalones4.webp') }}" alt="pantalones">
+                <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesCargo2.webp') }}" alt="pantalones cargo 2">
             </div>
         </div>
     </div>

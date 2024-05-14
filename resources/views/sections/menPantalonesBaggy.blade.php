@@ -9,36 +9,34 @@
         <span class="p-2 ms-2"><a href="{{ route('menPantalonesCargo')}}" class="nav-link-list">Cargo</a></span>
     </div>
     <div class="row mt-4">
+        @include('alerts.msg')
         @foreach($products as $product)
         <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesBaggy'. $loop->index+1 .'.webp') }}">
-                <div class="card-body">
-                    <p class="TitleProduct"><strong>{{$product->name}}</strong></p>
-                    <div class="d-flex justify-content-between align-items-center mt-4">
-                        <h5 class="mb-0">{{$product->price}}€</h5>
-                        <div class="d-flex align-items-center">
-                            <div class="mr-2">
-                                <select class="form-select form-select-sm">
-                                    <option selected disabled>Talla</option>
-                                    <option value="XS">XS</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                </select>
-                            </div>
-                            <form action="{{ route('add') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                <button type="submit" class="btn btn-dark ms-2" name="btn">
+            <form action="{{ route('add') }}" method="post">
+                @csrf
+                <div class="card">
+                    <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesBaggy'. $loop->index+1 .'.webp') }}">
+                    <div class="card-body">
+                        <p class="TitleProduct"><strong>{{$product->name}}</strong></p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <h5 class="mb-0">{{$product->price}}€</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="mr-2">
+                                    <select class="form-select form-select-sm" name="size_id">
+                                        @foreach ($product->sizes as $size)
+                                        <option value="{{ $size->id }}">{{ $size->size }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-dark ms-2" name="cart-btn">
                                     <span><i class="fa-solid fa-cart-shopping"></i></span>
                                 </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         @endforeach
     </div>
