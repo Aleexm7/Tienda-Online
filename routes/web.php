@@ -55,7 +55,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::get('/profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/count-product', [CartController::class, 'countProductsInCart'])->name('countProductsInCart');
     
 });
 

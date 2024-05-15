@@ -415,6 +415,12 @@ class DatabaseSeeder extends Seeder
                 'user_role' => 'customer',
             ],
             [
+                'name' => 'prueba',
+                'email' => 'prueba@example.com',
+                'password' => Hash::make('1234'),
+                'user_role' => 'customer',
+            ],
+            [
                 'name' => 'Maria Rodriguez',
                 'email' => 'maria@example.com',
                 'password' => Hash::make('password456'),

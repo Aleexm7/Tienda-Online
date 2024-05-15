@@ -112,32 +112,59 @@ class CartController extends Controller
 
     public function checkout()
     {
-        return view('sections.checkout');
+        
+        $userId = Auth::user()->id;
+    
+        // Obtener el carrito del usuario
+        $cart = Cart::where('user_id', $userId)->first();
+    
+        // Obtener los productos del carrito junto con sus tamaños y detalles
+        $cartProducts = DB::table('carts')
+            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
+            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
+            ->join('products', 'product_sizes.product_id', '=', 'products.id')
+            ->where('carts.user_id', $userId)
+            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category', 'cart_products.quantity')
+            ->get();
+    
+        // Calcular el subtotal sumando el precio de cada producto en el carrito
+        $subtotal = 0;
+        foreach ($cartProducts as $product) {
+            $subtotal += $product->product_price * $product->quantity;
+        }
+    
+        
+        // Calcular el total sumando el impuesto al subtotal (21%)
+        $tax = $subtotal * 0.21;
+        $total = $subtotal + $tax;
+    
+        // Pasar los datos a la vista
+        return view('sections.cartSection', compact('cartProducts', 'tax', 'total'));
     }
 
     public function removeFromCart(Request $request)
     {
         // Obtener el id del producto a eliminar del carrito
         $productId = $request->input('id');
-        
+
         // Obtener el id del usuario autenticado
         $userId = Auth::user()->id;
 
         $cartProduct = DB::table('carts')
-        ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
-        ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
-        ->join('products', 'product_sizes.product_id', '=', 'products.id')
-        ->where('carts.user_id', $userId)
-        ->where('products.id', $productId)
-        ->select('cart_products.*')
-        ->first();
+            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
+            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
+            ->join('products', 'product_sizes.product_id', '=', 'products.id')
+            ->where('carts.user_id', $userId)
+            ->where('products.id', $productId)
+            ->select('cart_products.*')
+            ->first();
 
-        
+
         if ($cartProduct) {
             // Eliminar el producto del carrito
             DB::table('cart_products')->where('id', $cartProduct->id)->delete();
 
-    
+
             // Redirigir de vuelta con un mensaje de éxito
             return redirect()->back()->with('success', 'Producto eliminado del carrito exitosamente.');
         } else {
@@ -146,28 +173,5 @@ class CartController extends Controller
         }
     }
 
-
-    public function countProductsInCart()
-    {
-        
-        $userId = Auth::id();
-
-        
-        $cart = Cart::where('user_id', $userId)->first();
-
-        $cartProducts = DB::table('carts')
-            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
-            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
-            ->join('products', 'product_sizes.product_id', '=', 'products.id')
-            ->where('carts.user_id', $userId)
-            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category')
-            ->get();
-
-            $totalProducts = $cartProducts->count();
-        
-
-        
-        return view('layouts.general', compact('totalProducts'));
-    }
 
 }

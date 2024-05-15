@@ -37,7 +37,9 @@
                     @if(auth()->user())
                     <a href="{{route('ProductosCarrito')}}" class="cart-icon me-3">
                         <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">{{ $totalProducts }}</span>
+                        <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                         0
+                        </span>
                     </a>
                     <span class="text-light">{{auth()->user()->name}}</span>
                     <a href="{{ route('logout') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
