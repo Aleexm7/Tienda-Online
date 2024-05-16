@@ -2,62 +2,64 @@
 
 @section('general')
 
-<header>
-    <nav class="navbar navbar-expand-lg bg-black fixed-top">
-        <div class="container">
-            <a class="navbar-brand"><img src="/assets/img/logo.png" width="140" height="40" alt="logo"></a>
-
-            <!-- Botón de hamburguesa para dispositivos pequeños -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav mx-auto" id="navList">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('menSection') }}">Hombre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Mujer</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Campo de búsqueda a la derecha -->
-                <form class="d-flex ms-auto mb-2">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn btn-outline-light" type="submit">Buscar</button>
-                </form>
-
-                <!-- Iconos a la derecha -->
-                <div class="d-flex align-items-center ms-3 position-relative">
-                    @if(auth()->user())
-                    <a href="{{route('ProductosCarrito')}}" class="cart-icon me-3">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
-                         0
-                        </span>
-                    </a>
-                    <span class="text-light">{{auth()->user()->name}}</span>
-                    <a href="{{ route('logout') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
-                    @else
-                    <a href="{{ route('login') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
-                    @endif
-                </div>
-
+<nav id="navbar" class="navbar navbar-expand-lg">
+    <div class="container">
+        
+            <div class="col-3">
+                <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/UrbanStyle.png" width="140" height="50" alt="logo"></a>
             </div>
-        </div>
-    </nav>
 
-    <!--  <div class="fixed-top mt-5">
-        <div class="d-flex justify-content-center mt-2 message-bar py-2">
-            <a>ENVÍO GRATIS: NACIONAL MAYOR A 100€ | INTERNACIONAL MAYOR A 200€</a>
-        </div>
-    </div> -->
-</header>
+            <div class="col-6">
+                <!-- Botón de hamburguesa para dispositivos pequeños -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav mx-auto" id="navList">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('menSection') }}">Hombre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Mujer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3 text-end">
+
+                    @if(auth()->user())
+                    <div class="d-flex align-items-center ms-3 position-relative">
+                        <a href="{{route('ProductosCarrito')}}" class="cart-icon me-3">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                        </a>
+                        <span class="text-light">{{auth()->user()->name}}</span>
+                        <a href="{{ route('logout') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
+                        <a href="{{ route('login') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
+                    </div>
+                    @else
+
+                    <div class="text-end d-none d-md-block">
+                        <div class="siteLinkContainer">
+                            <a href="{{ route('login') }}" class="blackLink siteLink">Login</a>
+                        </div>
+                    </div>
+                    @endif
+            </div>
+        
+      
+    </div>
+</nav>
+
 
 
 

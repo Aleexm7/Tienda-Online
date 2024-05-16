@@ -119,6 +119,6 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
 
     Route::delete('/remove/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 
-    Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
+    
 
 });

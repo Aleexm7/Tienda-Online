@@ -61,7 +61,7 @@
             </div>
             @endforeach
 
-            <a href="{{route('checkout')}}" class="btn btn-primary btn-lg btn-block">Continue to checkout</a>
+            <a href="#" class="btn btn-primary btn-lg btn-block">Continue to checkout</a>
           </div>
         </div>
       </div>
@@ -104,15 +104,15 @@
                         <hr class="my-4">
                         <div class="d-flex justify-content-between">
                             <p class="mb-2">Subtotal</p>
-                            <p class="mb-2">{{ $subtotal}}€</p>
+                            <p class="mb-2">{{$subtotal}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p class="mb-2">Tax</p>
-                            <p class="mb-2">{{ number_format($tax, 2) }}€</p>
+                            
                         </div>
                         <div class="d-flex justify-content-between mb-4">
                             <p class="mb-2">Total(Incl. impuestos)</p>
-                            <p class="mb-2">{{ number_format($total, 2) }}€</p>
+                            
                         </div>
                         <button id="checkoutBtn" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-block btn-lg" onclick="mostrarModalYCerrar()">
                             <div class="d-flex justify-content-between">
