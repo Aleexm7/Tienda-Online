@@ -2,8 +2,8 @@
 
 @section('general')
 
-<nav id="navbar" class="navbar navbar-expand-lg">
-    <div class="container">
+<nav id="navbar" class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
         
             <div class="col-3">
                 <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/UrbanStyle.png" width="140" height="50" alt="logo"></a>
@@ -25,26 +25,25 @@
                                 <a class="nav-link" href="{{ route('menSection') }}">Hombre</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Mujer</a>
+                                <a class="nav-link" href="{{ route('womanSection') }}">Mujer</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-3 text-end">
+            <div class="col-3">
 
                     @if(auth()->user())
-                    <div class="d-flex align-items-center ms-3 position-relative">
-                        <a href="{{route('ProductosCarrito')}}" class="cart-icon me-3">
+                    <div class="d-flex justify-content-end">
+                        <a href="{{route('ProductosCarrito')}}" class="cart-icon me-4">
                             <i class="fas fa-shopping-cart"></i>
                             <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
                                 0
                             </span>
                         </a>
-                        <span class="text-light">{{auth()->user()->name}}</span>
-                        <a href="{{ route('logout') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
-                        <a href="{{ route('login') }}" class="user-icon"><i class="fas fa-user ms-3"></i></a>
+                        <a href="{{ route('logout') }}" class="user-icon me-4"><i class="fas fa-user"></i></a>
+                       
                     </div>
                     @else
 
@@ -75,6 +74,7 @@
 @yield('menPantalonesBaggy')
 @yield('menPantalonesCargo')
 @yield('menChaquetas')
+@yield('womanSection')
 
 
 <footer class="bg-black text-white mt-4">

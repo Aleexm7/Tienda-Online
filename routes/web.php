@@ -75,7 +75,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* -------------- SECTION MEN --------------------*/
 
-Route::prefix('men')->group(function () {
+Route::prefix('hombre')->group(function () {
 
     /*Ruta para mostrar menu principal de la section hombres */
     Route::get('/', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
@@ -110,6 +110,15 @@ Route::prefix('men')->group(function () {
     Route::post('/sudaderas/add', [App\Http\Controllers\CartController::class, 'add'])->name('add');
 });
 
+/* -------------- SECTION WOMAN --------------------*/
+
+Route::prefix('mujer')->group(function () {
+
+    /*Ruta para mostrar menu principal de la section hombres */
+    Route::get('/', [App\Http\Controllers\WomanController::class, 'index'])->name('womanSection');
+
+   
+});
 
 Route::middleware(['auth'])->prefix('cart')->group(function () {
     /* RUTA PARA VER LOS PRODUCTOS AÑADIDO AL CARRITO */
