@@ -8,18 +8,14 @@ use App\Models\ProductSize;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $products = Product::all();
-        
+
         return view('products.index', compact('products'));
     }
-    
+
 
 
     /**
@@ -37,41 +33,51 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         /* $request->validate([
-            'product_name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'stock' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'category' => 'required|string|max:255',
+            'total_stock' => 'required|integer',
+            'section' => 'required|string|in:hombre,mujer',
         ]); */
 
 
 
-        /* // Utiliza el método create de Eloquent para crear y guardar un nuevo producto
-        Product::create([
-            'product_name' => $request->input('product_name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'stock' => $request->input('stock'),
-        ]); */
+        $product = new Product();
+        $product->name = $request->get('name');
+        $product->price = $request->get('price');
+        $product->category = $request->get('category');
+        $product->total_stock = $request->get('total_stock');
+        $product->section = $request->get('section');
 
-        $productos = new Product();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            // Obtener el nombre original del archivo
+            $originalName = $file->getClientOriginalName();
+            
+            // Guardar la imagen en el almacenamiento público sin cambiar el nombre
+            $filePath = $file->store("public/assets/img/products/{$request->section}");
 
-        $productos->product_name = $request->get('product_name');
-        $productos->description = $request->get('description');
-        $productos->price = $request->get('price');
-        $productos->stock = $request->get('stock');
+            // Verificar si la imagen se ha guardado correctamente
+            if ($filePath) {
+                
+                $product->image = $originalName;
+               
+            } else {
+                // Manejar el caso en que la imagen no se haya guardado correctamente
+                return redirect()->back()->with('error', 'Error al guardar la imagen.');
+            }
+        }
 
-        $productos->save();
+
+
+
+        $product->save();
 
         return redirect('/dashboardadmin')->with('success', 'Producto creado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.

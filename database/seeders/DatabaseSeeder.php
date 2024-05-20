@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera1.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre'
             ],
             [
                 'name' => 'Sudadera azul marino not a fan',
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera2.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre'
             ],
             [
                 'name' => 'Sudadera ash sherry',
@@ -42,6 +44,8 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera3.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre',
+
             ],
             [
                 'name' => 'Sudadera negra sherry',
@@ -49,6 +53,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera4.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Sudadera boxy azul kory',
@@ -56,6 +61,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera5.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Sudadera boxy ash kory',
@@ -63,6 +69,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera6.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Sudadera boxy azul',
@@ -70,6 +77,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera7.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Sudadera boxy ice grey',
@@ -77,6 +85,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudadera8.webp',
                 'category' => 'Sudaderas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Balear crewneck off-white',
@@ -84,6 +93,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudaderaSinCapucha1.webp',
                 'category' => 'Sudaderas Sin Capucha',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Balear crewneck pale blue',
@@ -91,6 +101,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudaderaSinCapucha2.webp',
                 'category' => 'Sudaderas Sin Capucha',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Overdyed crewneck green',
@@ -98,6 +109,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudaderaSinCapucha3.webp',
                 'category' => 'Sudaderas Sin Capucha',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Lil boat crewneck navy',
@@ -105,6 +117,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'sudaderaSinCapucha4.webp',
                 'category' => 'Sudaderas Sin Capucha',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta verde origins',
@@ -112,6 +125,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas1.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta marshmallow origins',
@@ -119,6 +133,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas2.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta azul marino origins',
@@ -126,6 +141,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas3.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta ash origins',
@@ -133,6 +149,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas5.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta tirantes básicas x2 negra',
@@ -140,6 +157,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas6.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta tirantes básicas x2 khaki/verde',
@@ -147,6 +165,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas7.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta tirantes básicas x2 naranja/lima',
@@ -154,6 +173,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasBasicas8.webp',
                 'category' => 'Camisetas básicas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta boxy fit ash',
@@ -161,6 +181,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasCropped1.webp',
                 'category' => 'Camisetas cropped',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta lilac cropped bacano',
@@ -168,6 +189,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasCropped2.webp',
                 'category' => 'Camisetas cropped',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta blanca cropped frist class',
@@ -175,6 +197,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasCropped3.webp',
                 'category' => 'Camisetas croppeds',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta ash cropped costa',
@@ -182,6 +205,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasCropped4.webp',
                 'category' => 'Camisetas cropped',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta blanca cropped bacano',
@@ -189,6 +213,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasCropped5.webp',
                 'category' => 'Camisetas cropped',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta blanca cropped costa',
@@ -196,6 +221,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetasCropped6.webp',
                 'category' => 'Camisetas cropped',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta azul virginity',
@@ -203,6 +229,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas1.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta verde locally hated',
@@ -210,6 +237,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas2.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta azul marino locally hated',
@@ -217,6 +245,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas3.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta blanca locally hated',
@@ -224,6 +253,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas4.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta ash first class',
@@ -231,6 +261,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas5.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta negra sherry',
@@ -238,6 +269,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas6.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Camiseta off-white summer tour',
@@ -245,6 +277,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'camisetas7.webp',
                 'category' => 'Camisetas estampadas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón vaquero azul',
@@ -252,6 +285,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesVaquero1.webp',
                 'category' => 'Pantalones vaquero',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón vaquero azul washed',
@@ -259,6 +293,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesVaquero2.webp',
                 'category' => 'Pantalones vaquero',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón vaquero negro',
@@ -266,6 +301,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesVaquero3.webp',
                 'category' => 'Pantalones vaquero',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón vaquero raw',
@@ -273,6 +309,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesVaquero4.webp',
                 'category' => 'Pantalones vaquero',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón vaquero trademark',
@@ -280,6 +317,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesVaquero5.webp',
                 'category' => 'Pantalones vaquero',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón baggy azul old',
@@ -287,6 +325,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesBaggy2.webp',
                 'category' => 'Pantalones baggy',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón baggy sand dust old',
@@ -294,6 +333,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesBaggy1.webp',
                 'category' => 'Pantalones baggy',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón cargo ash army',
@@ -301,6 +341,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesCargo1.webp',
                 'category' => 'Pantalones cargo',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón cargo verde army',
@@ -308,6 +349,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesCargo2.webp',
                 'category' => 'Pantalones cargo',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Pantalón cargo verde oscuro',
@@ -315,6 +357,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'pantalonesCargo2.webp',
                 'category' => 'Pantalones cargo',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => '"LA "Bomber jacket',
@@ -322,6 +365,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'chaquetas1.webp',
                 'category' => 'Chaquetas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Jewel zip up jacket',
@@ -329,6 +373,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'chaquetas2.webp',
                 'category' => 'Chaquetas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Carpenter jacket brown',
@@ -336,6 +381,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'chaquetas3.webp',
                 'category' => 'Chaquetas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Soft shell boxy jacket beige',
@@ -343,6 +389,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'chaquetas4.webp',
                 'category' => 'Chaquetas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Trademark denim jacket',
@@ -350,6 +397,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'chaquetas5.webp',
                 'category' => 'Chaquetas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
             [
                 'name' => 'Soft shell boxy jacket neon',
@@ -357,6 +405,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'chaquetas6.webp',
                 'category' => 'Chaquetas',
                 'total_stock' => 200,
+                'section' => 'hombre',
             ],
         ];
 

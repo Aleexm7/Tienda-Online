@@ -21,9 +21,11 @@
         <tr class="table-primary">
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>
             <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">categoria</th>
+            <th scope="col">Seccion</th>
+            <th scope="col">stock Total</th>
             <th scope="col">Acciones</th>
 
         </tr>
@@ -32,11 +34,12 @@
         @foreach ($products as $product)
         <tr>
             <td>{{$product->id}}</td>
-            <td>{{$product->product_name}}</td>
-            <td>{{$product->description}}</td>
+            <td>{{$product->name}}</td>
             <td>{{$product->price}}</td>
-            <td>{{$product->stock}}</td>
-
+            <td>{{$product->image}}</td>
+            <td>{{$product->category}}</td>
+            <td>{{$product->section}}</td>
+            <td>{{$product->total_stock}}</td>
             <td>
                 <a class="btn btn-warning" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-pencil-alt"></i></a>
                 <a class="btn btn-danger" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-trash-alt"></i></a>

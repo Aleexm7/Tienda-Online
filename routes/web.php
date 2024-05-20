@@ -34,7 +34,7 @@ Route::middleware(['admin'])->prefix('dashboardadmin')->group(function () {
 
     // Route::get('/dashboardadmin', [DashboardController::class, 'index']);
 
-    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/', [ProductController::class, 'index'])->name('dashboardadmin');
 
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('category');
             $table->integer('total_stock');
+            $table->string('section');
             $table->timestamps();
         });
     }
