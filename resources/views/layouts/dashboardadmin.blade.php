@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 bg-dark text-white p-3">
@@ -28,26 +27,34 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a href="#" class="nav-link link-light d-flex align-items-center" aria-current="page">
-              <span class="material-symbols-outlined">home</span> Home
+              <i class="fas fa-home me-2"></i> Home
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link link-light">Dashboard</a>
+            <a href="#" class="nav-link link-light">
+              <i class="fas fa-chart-line me-2"></i> Dashboard
+            </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link link-light">Pedidos</a>
+            <a href="#" class="nav-link link-light">
+              <i class="fas fa-shopping-cart me-2"></i> Pedidos
+            </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link link-light">Productos</a>
+            <a href="#" class="nav-link link-light">
+              <i class="fas fa-box me-2"></i> Productos
+            </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link link-light">Clientes</a>
+            <a href="#" class="nav-link link-light">
+              <i class="fas fa-users me-2"></i> Clientes
+            </a>
           </li>
         </ul>
         <hr class="bg-light">
         <div class="dropdown">
           <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Configuración
+            <i class="fas fa-cog me-2"></i> Configuración
           </button>
           <ul class="dropdown-menu">
             <li> <a class="dropdown-item" href="{{ url('/dashboard') }}">Cuenta</a> </li>
@@ -61,7 +68,7 @@
         </div>
       </div>
 
-      <div class="col-md-10 p-5">
+      <div class="col-md-10">
         @yield('crud')
         @yield('crud_create')
         @yield('crud_edit')

@@ -47,6 +47,8 @@ Route::middleware(['admin'])->prefix('dashboardadmin')->group(function () {
     // Ruta para procesar la actualización
     Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
 
+    //Ruta para eliminar un registro
+    Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     // Ruta para mostrar la lista de productos (con paginación y cantidad personalizada)
     Route::get('/products', [ProductController::class, 'customIndex'])->name('products.customIndex');
 });

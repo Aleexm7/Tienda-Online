@@ -40,9 +40,22 @@
             <td>{{$product->category}}</td>
             <td>{{$product->section}}</td>
             <td>{{$product->total_stock}}</td>
-            <td>
-                <a class="btn btn-warning" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-pencil-alt"></i></a>
-                <a class="btn btn-danger" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-trash-alt"></i></a>
+            <td class="text-center">
+                <div class="d-inline-block">
+                    <a class="btn btn-warning" href="{{ route('products.edit', $product->id) }}">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                </div>
+
+                <div class="d-inline-block">
+                    <form id="delete-product-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach
@@ -51,6 +64,29 @@
 </table>
 
 
-
+<!-- /*MODAL PARA ELIMINAR UN REGISTRO */ -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar este registro?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="deleteForm" action="" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

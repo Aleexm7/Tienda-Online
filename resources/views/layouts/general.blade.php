@@ -4,58 +4,60 @@
 
 <nav id="navbar" class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        
-            <div class="col-3">
-                <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/UrbanStyle.png" width="140" height="50" alt="logo"></a>
-            </div>
 
-            <div class="col-6">
-                <!-- Botón de hamburguesa para dispositivos pequeños -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div class="col-3">
+            <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/UrbanStyle.png" width="140" height="50" alt="logo"></a>
+        </div>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="navbar-nav mx-auto" id="navList">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('menSection') }}">Hombre</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('womanSection') }}">Mujer</a>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="col-6">
+            <!-- Botón de hamburguesa para dispositivos pequeños -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav mx-auto" id="navList">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('menSection') }}">Hombre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('womanSection') }}">Mujer</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
 
-            <div class="col-3">
-
-                    @if(auth()->user())
-                    <div class="d-flex justify-content-end">
-                        <a href="{{route('ProductosCarrito')}}" class="cart-icon me-4">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
-                                0
-                            </span>
-                        </a>
-                        <a href="{{ route('logout') }}" class="user-icon me-4"><i class="fas fa-user"></i></a>
-                       
-                    </div>
-                    @else
-
-                    <div class="text-end d-none d-md-block">
-                        <div class="siteLinkContainer">
-                            <a href="{{ route('login') }}" class="blackLink siteLink">Login</a>
-                        </div>
-                    </div>
-                    @endif
+        <div class="col-3">
+            @auth
+            <div class="d-flex justify-content-end">
+                <a href="{{ route('ProductosCarrito') }}" class="cart-icon me-4">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+                </a>
+                @if(auth()->check() && auth()->user()->admin)
+                <a href="{{ route('dashboardadmin') }}" class="dashboard-icon me-4">
+                    <i class="fas fa-tachometer-alt"></i>
+                </a>
+                @endif
+                <a href="{{ route('logout') }}" class="user-icon me-4"><i class="fas fa-user"></i></a>
             </div>
-        
-      
+            @else
+            <div class="text-end d-none d-md-block">
+                <div class="siteLinkContainer">
+                    <a href="{{ route('login') }}" class="blackLink siteLink">Login</a>
+                </div>
+            </div>
+            @endauth
+        </div>
+
+
     </div>
 </nav>
 

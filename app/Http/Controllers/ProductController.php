@@ -60,7 +60,7 @@ class ProductController extends Controller
 
             // Verificar si la imagen se ha guardado correctamente
             if ($filePath) {
-                
+
                 $product->image = $originalName;
                
             } else {
@@ -109,6 +109,8 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
+
+        return redirect('/dashboardadmin')->with('success', 'Producto eliminado exitosamente.');
     }
 
 
