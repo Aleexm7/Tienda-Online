@@ -11,7 +11,7 @@ class Product extends Model
 
 
     /* protected $table = 'products'; */
-    protected $fillable = ['name', 'price', 'image', 'category', 'stock_total'];
+    protected $fillable = ['name', 'price', 'image', 'category', 'stock_total','section'];
 
     public function sizes()
     {

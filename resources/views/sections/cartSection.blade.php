@@ -15,8 +15,8 @@
           <hr>
           <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-              <p class="mb-1">Shopping cart</p>
-              <p class="mb-0">You have {{ count($cartProducts) }} items in your cart</p>
+              <p class="mb-1">Carrito de compra</p>
+              <p class="mb-0">Tienes {{ count($cartProducts) }} productos en tu carrito.</p>
             </div>
 
           </div>

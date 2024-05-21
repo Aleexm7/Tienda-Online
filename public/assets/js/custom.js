@@ -1,3 +1,10 @@
+console.log('ESTOY DENTRO DE CUSTOM.JS');
+
+
+function redirectLogin() {
+  window.location.href = "{{ route('login') }}";
+}
+
 
 function mostrarModalYCerrar() {
   
@@ -8,3 +15,4 @@ function mostrarModalYCerrar() {
     $('#orderSuccessModal').modal('hide');
   }, 10000); 
 }
+

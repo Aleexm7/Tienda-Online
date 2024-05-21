@@ -77,7 +77,12 @@
 @yield('menPantalonesCargo')
 @yield('menChaquetas')
 @yield('womanSection')
-
+@yield('womanCamisetas')
+@yield('womanPantalones')
+@yield('womanPantalonesCorto')
+@yield('womanVestidos')
+@yield('womanVestidosCorto')
+@yield('womanZapatos')
 
 <footer class="bg-black text-white mt-4">
     <div class="container py-5">

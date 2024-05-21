@@ -21,6 +21,11 @@ class CartController extends Controller
         // Obtener el carrito del usuario
         $cart = Cart::where('user_id', $userId)->first();
 
+        if (!$cart) {
+
+            return redirect()->route('home')->with('error', 'No hay productos en el carrito.');
+        }
+
         // Obtener los productos del carrito junto con sus tamaños y detalles
         $cartProducts = CartProductModel::where('cart_id', $cart->id)->get();
 
@@ -30,10 +35,10 @@ class CartController extends Controller
             ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
             ->join('products', 'product_sizes.product_id', '=', 'products.id')
             ->where('carts.user_id', $userId)
-            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category')
+            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category', 'products.section as section', 'cart_products.quantity')
             ->get();
 
-
+        /* dd($cartProducts); */
 
 
         // Obtener la cantidad de productos en el carrito
@@ -42,7 +47,7 @@ class CartController extends Controller
             ->where('carts.user_id', $userId)
             ->select('cart_products.quantity')
             ->get();
-        /* dd($quantityProduct); */
+
 
         $quantities = [];
 
@@ -66,30 +71,43 @@ class CartController extends Controller
             'Chaquetas' => 'chaquetas',
         ];
 
+        $categoryImageFoldersWomen = [
+            'Camisetas básicas' => 'camisetas',
+            'Pantalones largo' => 'pantalones',
+            'Pantalones corto' => 'pantalones',
+            'Vestido largo' => 'vestido',
+            'Vestido corto' => 'vestido',
+            'sandalias' => 'zapatos',
+            'sandalias plataforma' => 'zapatos',
+            'sandalias planas' => 'zapatos',
+        ];
 
         // Construimos las rutas completas de las imágenes de los productos
         foreach ($cartProducts as $product) {
-            $categoryFolder = $categoryImageFolders[$product->category];
-            $product->image_path = "/assets/img/products/men/{$categoryFolder}/{$product->product_image}";
-        }
+            if ($product->section === 'hombre' && isset($categoryImageFolders[$product->category])) {
+                $categoryFolder = $categoryImageFolders[$product->category];
+                $product->image_path = "/assets/img/products/men/{$categoryFolder}/{$product->product_image}";
+            } elseif ($product->section === 'mujer' && isset($categoryImageFolders[$product->category])) {
+                $categoryFolder = $categoryImageFoldersWomen[$product->category];
+                $product->image_path = "/assets/img/products/women/{$categoryFolder}/{$product->product_image}";
+            }
 
-        
 
-        $subtotal = 0;
-        foreach ($cartProducts as $product) {
-            
-            $subtotal += $product->product_price * $product->quantity;
+
+            $subtotal = 0;
+            foreach ($cartProducts as $product) {
+                
+                $subtotal += $product->product_price * $product->quantity;
+            }
+
+
+            // Calcular el total sumando el impuesto al subtotal (21%)
+            $tax = $subtotal * 0.21;
+            $total = $subtotal + $tax;
+
+            return view('sections.cartSection', compact('cartProducts', 'quantities', 'subtotal', 'tax', 'total'));
         }
-    
-        
-        // Calcular el total sumando el impuesto al subtotal (21%)
-        $tax = $subtotal * 0.21;
-        $total = $subtotal + $tax;
-    
-        return view('sections.cartSection', compact('cartProducts', 'quantities', 'subtotal', 'tax', 'total'));
     }
-
-
 
 
 
@@ -156,6 +174,4 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'El producto no existe en el carrito.');
         }
     }
-
-
 }

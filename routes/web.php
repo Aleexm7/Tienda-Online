@@ -57,7 +57,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::get('/profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
-    
 });
 
 Route::middleware('role:customer')->get('/home', [WelcomeController::class, 'index'])->name('inicio');
@@ -116,10 +115,26 @@ Route::prefix('hombre')->group(function () {
 
 Route::prefix('mujer')->group(function () {
 
-    /*Ruta para mostrar menu principal de la section hombres */
+    /*Ruta para mostrar menu principal de la section mujer */
     Route::get('/', [App\Http\Controllers\WomanController::class, 'index'])->name('womanSection');
 
-   
+    /*Ruta para mostrar las camisetas */
+    Route::get('/camisetas', [App\Http\Controllers\WomanController::class, 'getCamisetas'])->name('womanCamisetas');
+
+    /*Ruta para mostrar los pantalones */
+    Route::get('/pantalones', [App\Http\Controllers\WomanController::class, 'getPantalones'])->name('womanPantalones');
+
+    /*Ruta para mostrar los pantalones cortos */
+    Route::get('/pantalones-corto', [App\Http\Controllers\WomanController::class, 'getPantalonesCorto'])->name('womanPantalonesCortos');
+
+    /*Ruta para mostrar los vestidos largos */
+    Route::get('/vestidos', [App\Http\Controllers\WomanController::class, 'getVestidos'])->name('womanVestidos');
+
+    /*Ruta para mostrar los vestidos cortos */
+    Route::get('/vestidos-corto', [App\Http\Controllers\WomanController::class, 'getVestidosCorto'])->name('womanVestidosCorto');
+
+       /*Ruta para mostrar los vestidos cortos */
+       Route::get('/zapatos', [App\Http\Controllers\WomanController::class, 'getZapatos'])->name('womanZapatos');
 });
 
 Route::middleware(['auth'])->prefix('cart')->group(function () {
@@ -130,6 +145,5 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
 
     Route::delete('/remove/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 
-    
 
 });
