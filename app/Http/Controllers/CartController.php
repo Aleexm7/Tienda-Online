@@ -61,7 +61,7 @@ class CartController extends Controller
         // Array asociativo que mapea las categorías de productos con los nombres de las subcarpetas de imágenes
         $categoryImageFolders = [
             'Sudaderas' => 'sudaderas',
-            'Sudaderas Sin Capucha' => 'sudaderas',
+            'Sudaderas sin capucha' => 'sudaderas',
             'Camisetas básicas' => 'camisetas',
             'Camisetas cropped' => 'camisetas',
             'Camisetas estampadas' => 'camisetas',
@@ -72,14 +72,12 @@ class CartController extends Controller
         ];
 
         $categoryImageFoldersWomen = [
-            'Camisetas básicas' => 'camisetas',
+            'Camisetas basicas' => 'camisetas',
             'Pantalones largo' => 'pantalones',
             'Pantalones corto' => 'pantalones',
             'Vestido largo' => 'vestido',
             'Vestido corto' => 'vestido',
-            'sandalias' => 'zapatos',
-            'sandalias plataforma' => 'zapatos',
-            'sandalias planas' => 'zapatos',
+            'zapato' => 'zapatos',
         ];
 
         // Construimos las rutas completas de las imágenes de los productos

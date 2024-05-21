@@ -22,28 +22,52 @@
         <label for="" class="form-label">Imagen</label>
         <input type="file" name="image" id="image" class="form-control">
     </div>
+    
+    <div class="form-group mb-3">
+        <label for="section">Sección</label>
+        <select id="section" name="section" class="form-control" onchange="updateCategories()">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+        </select>
+    </div>
     <div class="mb-3 form-group">
         <label for="" class="form-label">Categoria</label>
         <select id="category" name="category" class="form-control">
-            <option value="sudaderas">Sudaderas</option>
-            <option value="chaquetas">Chaquetas</option>
-            <option value="pantalones">Pantalones</option>
-            <option value="camisetas">Camisetas</option>
+            
+           
         </select>
     </div>
     <div class="mb-3 form-group">
         <label for="" class="form-label">Stock total</label>
         <input type="number" name="total_stock" id="total_stock" class="form-control">
     </div>
-    <div class="form-group mb-3">
-        <label for="section">Sección</label>
-        <select id="section" name="section" class="form-control">
-            <option value="hombre">Hombre</option>
-            <option value="mujer">Mujer</option>
-        </select>
-    </div>
-
     <a href="/dashboardadmin" class="btn btn-secondary">Cancelar</a>
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
+
+
+@push('scripts')
+<script>
+    const categories = json($categories);
+
+    function updateCategories() {
+        const section = document.getElementById('section').value;
+        const categorySelect = document.getElementById('category');
+        
+       /*  // Limpiar las opciones actuales
+        categorySelect.innerHTML = '';
+ */
+        // Agregar las nuevas opciones
+        categories[section].forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.text = category;
+            categorySelect.appendChild(option);
+        });
+    }
+
+    // Inicializar las categorías al cargar la página
+    document.addEventListener('DOMContentLoaded', updateCategories);
+</script>
+@endpush
 @endsection

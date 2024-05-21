@@ -1,11 +1,6 @@
 console.log('ESTOY DENTRO DE CUSTOM.JS');
 
 
-function redirectLogin() {
-  window.location.href = "{{ route('login') }}";
-}
-
-
 function mostrarModalYCerrar() {
   
   $('#orderSuccessModal').modal('show');

@@ -21,29 +21,30 @@ a.siteLink {
 }
 
 .blackLink {
-    color: #fff;
-    background: #000;
+    color: #000;
+    background: #fff;
     transition: all 300ms linear;
 }
 
 .blackLink:hover {
     color: #000;
-    background: #fff;
+    background: #c4c4c4;
 }
 
 .fa-shopping-cart,
-.fa-user {
-    color: black;
+.fa-user, .fa-tachometer-alt {
+    color: #fff;
 }
 
-.nav-link {
-    color: black;
+#navList .navbar-nav .nav-item .nav-link {
+    color: #fff;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 400;
 }
+
 
 #navList li:not(:last-child) {
-    border-right: 2px solid black;
+    border-right: 2px solid #fff;
     padding-right: 15px;
     padding-left: 15px;
     height: 35px;
@@ -55,7 +56,7 @@ a.siteLink {
 
 
 #emailLinkFooter {
-    color: black;
+    color: #fff;
     text-decoration: none;
     font-size: 15px;
 }

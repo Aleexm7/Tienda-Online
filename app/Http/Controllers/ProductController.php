@@ -23,8 +23,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $product = new Product(); // O la lógica que uses para crear un nuevo producto
-        return view('products.create', compact('product'));
+        $categories = [
+            'hombre' => ['Sudaderas', 'Sudaderas sin capucha', 'Camisetas basicas', 'Camisetas cropped','Camisetas estampadas'],
+            'mujer' => ['Camisetas basicas', 'Pantalones largo', 'Pantalones corto', 'Vestido largo', 'Vestido corto', 'zapatos']
+        ];
+
+        /* dd($categories); */
+        $product = new Product(); 
+        return view('products.create', compact('product','categories'));
     }
 
     /**

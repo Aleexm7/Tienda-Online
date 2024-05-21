@@ -80,6 +80,7 @@ Route::prefix('hombre')->group(function () {
 
     /*Ruta para mostrar menu principal de la section hombres */
     Route::get('/', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
+    Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('menIndex');
 
     /* Ruta para mostrar las camiseta cropped */
     Route::get('/camisetas/cropped', [App\Http\Controllers\MenController::class, 'getTshirtsCropped'])->name('menTshirtCropped');
@@ -108,7 +109,17 @@ Route::prefix('hombre')->group(function () {
     /* Ruta para mostrar las chaquetas*/
     Route::get('/chaquetas', [App\Http\Controllers\MenController::class, 'getChaquetas'])->name('menChaquetas');
 
-    Route::post('/sudaderas/add', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/sudaderas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/camisetas/cropped/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/camisetas/estampadas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/camisetas/basicas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/sudaderas/sin-capuchas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/pantalones/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/pantalones/baggy/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/pantalones/cargo/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/chaquetas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    
+    
 });
 
 /* -------------- SECTION WOMAN --------------------*/
@@ -117,6 +128,8 @@ Route::prefix('mujer')->group(function () {
 
     /*Ruta para mostrar menu principal de la section mujer */
     Route::get('/', [App\Http\Controllers\WomanController::class, 'index'])->name('womanSection');
+    Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('womenIndex');
+
 
     /*Ruta para mostrar las camisetas */
     Route::get('/camisetas', [App\Http\Controllers\WomanController::class, 'getCamisetas'])->name('womanCamisetas');
@@ -133,8 +146,8 @@ Route::prefix('mujer')->group(function () {
     /*Ruta para mostrar los vestidos cortos */
     Route::get('/vestidos-corto', [App\Http\Controllers\WomanController::class, 'getVestidosCorto'])->name('womanVestidosCorto');
 
-       /*Ruta para mostrar los vestidos cortos */
-       Route::get('/zapatos', [App\Http\Controllers\WomanController::class, 'getZapatos'])->name('womanZapatos');
+       /*Ruta para mostrar los zapatos */
+     Route::get('/zapatos', [App\Http\Controllers\WomanController::class, 'getZapatos'])->name('womanZapatos');
 });
 
 Route::middleware(['auth'])->prefix('cart')->group(function () {

@@ -2,11 +2,11 @@
 
 @section('general')
 
-<nav id="navbar" class="navbar navbar-expand-lg bg-light">
+<nav id="navbar" class="navbar navbar-expand-lg" style="background-color:black">
     <div class="container-fluid">
 
         <div class="col-3">
-            <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/UrbanStyle.png" width="140" height="50" alt="logo"></a>
+            <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/logoUrbanStyle.png" width="140" height="60" alt="logo" class="ms-2"></a>
         </div>
 
         <div class="col-6">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-3">
-            @auth
+            @if(auth()->check())
             <div class="d-flex justify-content-end">
                 <a href="{{ route('ProductosCarrito') }}" class="cart-icon me-4">
                     <i class="fas fa-shopping-cart"></i>
@@ -41,8 +41,8 @@
                         0
                     </span>
                 </a>
-                @if(auth()->check() && auth()->user()->admin)
-                <a href="{{ route('dashboardadmin') }}" class="dashboard-icon me-4">
+                @if(auth()->user()->hasRole('admin'))
+                <a href="{{ route('dashboardadmin') }}" class="dashboard-icon me-4" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-tachometer-alt"></i>
                 </a>
                 @endif
@@ -54,10 +54,8 @@
                     <a href="{{ route('login') }}" class="blackLink siteLink">Login</a>
                 </div>
             </div>
-            @endauth
+            @endif
         </div>
-
-
     </div>
 </nav>
 
@@ -88,7 +86,7 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-md-3 text-center">
-                <img src="/assets/img/logo.png" width="200" height="50" alt="logo">
+                <img src="/assets/img/logoUrbanStyle.png" width="200" height="50" alt="logo">
                 <div class="mt-3">
                     <a href="mailto:urbanstyle@gmail.com" id="emailLinkFooter">urbanstyle@gmail.com</a>
                 </div>

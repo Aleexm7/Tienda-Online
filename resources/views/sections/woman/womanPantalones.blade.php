@@ -49,4 +49,10 @@
     </div>
 </div>
 
+<script>
+function redirectLogin() {
+  window.location.href = "{{ route('login') }}";
+}
+
+</script>
 @endsection
