@@ -62,13 +62,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware('role:customer')->get('/home', [WelcomeController::class, 'index'])->name('inicio');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-/* Route::get('/login', function () {
-    return view('auth.login');
-    })->name('login')->middleware('guest'); */
-
-
-/* Ruta para productos */
-// Ruta para mostrar el formulario de creación
 
 
 
@@ -80,7 +73,6 @@ Route::prefix('hombre')->group(function () {
 
     /*Ruta para mostrar menu principal de la section hombres */
     Route::get('/', [App\Http\Controllers\MenController::class, 'index'])->name('menSection');
-    Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('menIndex');
 
     /* Ruta para mostrar las camiseta cropped */
     Route::get('/camisetas/cropped', [App\Http\Controllers\MenController::class, 'getTshirtsCropped'])->name('menTshirtCropped');
@@ -128,7 +120,7 @@ Route::prefix('mujer')->group(function () {
 
     /*Ruta para mostrar menu principal de la section mujer */
     Route::get('/', [App\Http\Controllers\WomanController::class, 'index'])->name('womanSection');
-    Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('womenIndex');
+    
 
 
     /*Ruta para mostrar las camisetas */

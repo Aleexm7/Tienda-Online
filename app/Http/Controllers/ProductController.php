@@ -21,16 +21,14 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $categories = [
-            'hombre' => ['Sudaderas', 'Sudaderas sin capucha', 'Camisetas basicas', 'Camisetas cropped','Camisetas estampadas'],
-            'mujer' => ['Camisetas basicas', 'Pantalones largo', 'Pantalones corto', 'Vestido largo', 'Vestido corto', 'zapatos']
-        ];
 
-        /* dd($categories); */
-        $product = new Product(); 
-        return view('products.create', compact('product','categories'));
+
+        $product = new Product();
+
+
+        return view('products.create', compact('product'));
     }
 
     /**
@@ -56,19 +54,21 @@ class ProductController extends Controller
         $product->total_stock = $request->get('total_stock');
         $product->section = $request->get('section');
 
+
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             // Obtener el nombre original del archivo
             $originalName = $file->getClientOriginalName();
-            
+
             // Guardar la imagen en el almacenamiento público sin cambiar el nombre
-            $filePath = $file->store("public/assets/img/products/{$request->section}");
+            $filePath = $file->store("public/assets/img/products/{$request->section}/productosNuevos");
 
             // Verificar si la imagen se ha guardado correctamente
             if ($filePath) {
 
                 $product->image = $originalName;
-               
+                
             } else {
                 // Manejar el caso en que la imagen no se haya guardado correctamente
                 return redirect()->back()->with('error', 'Error al guardar la imagen.');
@@ -76,18 +76,19 @@ class ProductController extends Controller
         }
 
 
+        
+
 
 
         $product->save();
+        $this->processProduct($product);
 
         return redirect('/dashboardadmin')->with('success', 'Producto creado exitosamente.');
     }
 
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -95,9 +96,7 @@ class ProductController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, $id)
     {
 
@@ -108,9 +107,7 @@ class ProductController extends Controller
         return redirect('/dashboardadmin')->with('success', 'Producto actualizado exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $product = Product::findOrFail($id);
@@ -126,5 +123,33 @@ class ProductController extends Controller
         $product = ProductSize::all();
 
         return view('admin.dashboard', compact('countStock'));
+    }
+
+
+
+    // Método para procesar el producto recién almacenado
+    private function processProduct(Product $product)
+    {
+
+        
+        if ($product->section === 'men' && $product->category === 'Sudaderas') {
+            return $this->showMenSudaderas($product);
+        } elseif ($product->section === 'men' && $product->category === 'Sudaderas Sin Capucha') {
+            return $this->showMenSudaderasSin($product);
+        } elseif ($product->section === 'men' && $product->category === 'Camisetas basicas') {
+            return $this->showMenCamisetasBasica($product);
+        } elseif ($product->section === 'men' && $product->category === 'Pantalones Baggy') {
+            return $this->showMenPantalonesBaggy($product);
+        } elseif ($product->section === 'men' && $product->category === 'Pantalones Cargo') {
+            return $this->showMenPantalonesCargo($product);
+        }
+    }
+
+
+    // Método para mostrar la vista de las camisetas para hombres
+    private function showMenCamisetasBasica(Product $product)
+    {
+        
+        return view('sections.men.menTshirtGraphic', compact('productoInsertado'));
     }
 }

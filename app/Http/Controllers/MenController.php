@@ -15,7 +15,7 @@ class MenController extends Controller
 
     public function getTshirtsBasic()
     {
-        $products = ModelsProduct::where('category', '=', 'Camisetas básicas')->get();
+        $products = ModelsProduct::where('category', '=', 'Camisetas basicas')->get();
         
         
         return view('sections.men.menTshirtBasic', compact('products'));

@@ -25,16 +25,16 @@
     
     <div class="form-group mb-3">
         <label for="section">Sección</label>
-        <select id="section" name="section" class="form-control" onchange="updateCategories()">
-            <option value="hombre">Hombre</option>
-            <option value="mujer">Mujer</option>
+        <select id="section" name="section" class="form-control">
+            <option value="men">Hombre</option>
+            <option value="woman">Mujer</option>
         </select>
     </div>
     <div class="mb-3 form-group">
-        <label for="" class="form-label">Categoria</label>
+        <label for="category" class="form-label">Categoría</label>
         <select id="category" name="category" class="form-control">
-            
-           
+            <!-- Opción predeterminada para la categoría -->
+            <option value="">Seleccione una categoría</option>
         </select>
     </div>
     <div class="mb-3 form-group">
@@ -46,28 +46,40 @@
 </form>
 
 
-@push('scripts')
 <script>
-    const categories = json($categories);
+document.addEventListener('DOMContentLoaded', function () {
+    var categories = {
+        men: ['Sudaderas', 'Sudaderas sin capucha', 'Camisetas basicas', 'Camisetas cropped', 'Camisetas estampadas', 'Pantalones vaquero', 'Pantalones baggy', 'Pantalones cargo', 'Chaquetas'],
+        woman: ['Camisetas basicas', 'Pantalones largo', 'Pantalones corto', 'Vestido largo', 'Vestido corto', 'zapatos']
+    };
+    var sectionSelect = document.getElementById('section');
+    var categorySelect = document.getElementById('category');
 
-    function updateCategories() {
-        const section = document.getElementById('section').value;
-        const categorySelect = document.getElementById('category');
-        
-       /*  // Limpiar las opciones actuales
-        categorySelect.innerHTML = '';
- */
-        // Agregar las nuevas opciones
-        categories[section].forEach(category => {
-            const option = document.createElement('option');
-            option.value = category;
-            option.text = category;
-            categorySelect.appendChild(option);
-        });
-    }
+    sectionSelect.addEventListener('change', function () {
+        var selectedSection = this.value;
 
-    // Inicializar las categorías al cargar la página
-    document.addEventListener('DOMContentLoaded', updateCategories);
+        // Limpiar las opciones actuales del select de categorías
+        while (categorySelect.firstChild) {
+            categorySelect.removeChild(categorySelect.firstChild);
+        }
+
+        // Agregar la opción predeterminada
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Seleccione una categoría';
+        defaultOption.selected = true;
+        categorySelect.appendChild(defaultOption);
+
+        // Agregar nuevas opciones basadas en la sección seleccionada
+        if (selectedSection && categories[selectedSection]) {
+            categories[selectedSection].forEach(function (category) {
+                var option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
+        }
+    });
+});
 </script>
-@endpush
 @endsection
