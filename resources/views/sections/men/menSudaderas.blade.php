@@ -8,12 +8,13 @@
         <span class="p-2 ms-2"><a href="{{ route('menSudaderaSinCapucha')}}" class="nav-link-list">Sudaderas sin capucha</a></span>
     </div>
  
+    
     <div class="row mt-4">
         @include('alerts.msg')
         @foreach($products as $product)
         <div class="col-md-4 mb-4">
             <form action="{{ route('add') }}" method="post">
-                @csrf <!-- Token CSRF dentro del formulario -->
+                @csrf
                 <div class="card">
                     <img src="{{ asset('/assets/img/products/men/sudaderas/sudadera'. $loop->index+1 .'.webp') }}" alt="SUDADERA BOXY AZUL">
                     <div class="card-body">

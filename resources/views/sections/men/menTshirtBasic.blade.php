@@ -13,7 +13,7 @@
         @include('alerts.msg')
         @foreach($products as $product)
         <div class="col-md-4 mb-4">
-            <form action="{{ route('add') }}" method="post">
+            <form action="{{ route('add', ['id' => $product->id])  }}" method="post">
                 @csrf
                 <div class="card">
                     <img src="{{ asset('/assets/img/products/men/camisetas/camisetasBasicas'. $loop->index+1 .'.webp') }}">

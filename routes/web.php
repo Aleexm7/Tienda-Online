@@ -101,7 +101,9 @@ Route::prefix('hombre')->group(function () {
     /* Ruta para mostrar las chaquetas*/
     Route::get('/chaquetas', [App\Http\Controllers\MenController::class, 'getChaquetas'])->name('menChaquetas');
 
-    Route::post('/sudaderas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    // Ruta para agregar productos al carrito
+    Route::post('/agregar-al-carrito', [CartController::class, 'add'])->name('add');
+    /*  Route::post('/sudaderas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
     Route::post('/camisetas/cropped/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
     Route::post('/camisetas/estampadas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
     Route::post('/camisetas/basicas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
@@ -109,7 +111,7 @@ Route::prefix('hombre')->group(function () {
     Route::post('/pantalones/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
     Route::post('/pantalones/baggy/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
     Route::post('/pantalones/cargo/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
-    Route::post('/chaquetas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add');
+    Route::post('/chaquetas/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('add'); */
     
     
 });

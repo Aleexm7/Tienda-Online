@@ -18,14 +18,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 
 <body>
     <!-- Aquí invocaremos a los section que no queramos que tengan navbar y footer -->
-    @yield('general')   
+    @yield('general')
     @yield('cartSection')
     @yield('checkout')
-    
+
 </body>
 
 </html>

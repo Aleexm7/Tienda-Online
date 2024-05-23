@@ -36,17 +36,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        /* $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'category' => 'required|string|max:255',
-            'total_stock' => 'required|integer',
-            'section' => 'required|string|in:hombre,mujer',
-        ]); */
-
-
-
         $product = new Product();
         $product->name = $request->get('name');
         $product->price = $request->get('price');
@@ -54,40 +43,43 @@ class ProductController extends Controller
         $product->total_stock = $request->get('total_stock');
         $product->section = $request->get('section');
 
-
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             // Obtener el nombre original del archivo
             $originalName = $file->getClientOriginalName();
 
-            // Guardar la imagen en el almacenamiento público sin cambiar el nombre
-            $filePath = $file->store("public/assets/img/products/{$request->section}/productosNuevos");
+            // Construir la ruta de destino
+            $destinationPath = public_path("assets/img/products/{$request->section}/productosNuevos");
 
-            // Verificar si la imagen se ha guardado correctamente
-            if ($filePath) {
-
+            // Mover el archivo al destino
+            if ($file->move($destinationPath, $originalName)) {
+                // Si el archivo se movió correctamente, guardar el nombre de la imagen en el producto
                 $product->image = $originalName;
-                
             } else {
-                // Manejar el caso en que la imagen no se haya guardado correctamente
+                // Manejar el caso en que el archivo no se haya movido correctamente
                 return redirect()->back()->with('error', 'Error al guardar la imagen.');
             }
         }
 
 
-        
 
+        // Guardar el producto en la base de datos
+        if ($product->save()) {
 
-
-        $product->save();
-        $this->processProduct($product);
-
-        return redirect('/dashboardadmin')->with('success', 'Producto creado exitosamente.');
+            return redirect('/dashboardadmin')->with('success', 'Producto creado exitosamente.');
+        } else {
+            // Manejar el caso en que el producto no se haya guardado correctamente
+            return redirect()->back()->with('error', 'Error al crear el producto.');
+        }
     }
 
 
-
+    protected function filterProducts($section, $category)
+    {
+        return Product::where('section', $section)
+            ->where('category', $category)
+            ->get();
+    }
 
     public function edit($id)
     {
@@ -125,31 +117,20 @@ class ProductController extends Controller
         return view('admin.dashboard', compact('countStock'));
     }
 
-
-
-    // Método para procesar el producto recién almacenado
-    private function processProduct(Product $product)
+    public function customIndex(Request $request)
     {
+        // Obtener el valor de "show" desde la solicitud, por defecto mostrar 5 registros
+        $show = $request->get('show', 5);
 
-        
-        if ($product->section === 'men' && $product->category === 'Sudaderas') {
-            return $this->showMenSudaderas($product);
-        } elseif ($product->section === 'men' && $product->category === 'Sudaderas Sin Capucha') {
-            return $this->showMenSudaderasSin($product);
-        } elseif ($product->section === 'men' && $product->category === 'Camisetas basicas') {
-            return $this->showMenCamisetasBasica($product);
-        } elseif ($product->section === 'men' && $product->category === 'Pantalones Baggy') {
-            return $this->showMenPantalonesBaggy($product);
-        } elseif ($product->section === 'men' && $product->category === 'Pantalones Cargo') {
-            return $this->showMenPantalonesCargo($product);
+        // Validar que el valor de "show" sea un número permitido
+        if (!in_array($show, [5, 10, 20])) {
+            $show = 5;
         }
-    }
 
+        // Obtener los productos con la paginación adecuada
+        $products = Product::paginate($show);
 
-    // Método para mostrar la vista de las camisetas para hombres
-    private function showMenCamisetasBasica(Product $product)
-    {
-        
-        return view('sections.men.menTshirtGraphic', compact('productoInsertado'));
+        // Retornar la vista con los productos paginados y la variable "show"
+        return view('products.index', compact('products', 'show'));
     }
 }

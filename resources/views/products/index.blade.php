@@ -15,7 +15,6 @@
         <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20</option>
     </select>
 </form>
-
 <table id="TablaProductos" class="table table-striped table-bordered shadow-lg mt-2" style="width:100%">
     <thead class="bg bg-primary text-white">
         <tr class="table-primary">

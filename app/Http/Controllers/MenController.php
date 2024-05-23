@@ -15,68 +15,108 @@ class MenController extends Controller
 
     public function getTshirtsBasic()
     {
-        $products = ModelsProduct::where('category', '=', 'Camisetas basicas')->get();
-        
-        
-        return view('sections.men.menTshirtBasic', compact('products'));
+        $products = ModelsProduct::where('section', 'men')
+            ->where('category', 'Camisetas basicas')
+            ->get();
+
+        $sizes = ProductSize::all();
+
+        return view('sections.men.menTshirtBasic', compact('products', 'sizes'));
     }
 
     public function getTshirtsCropped()
     {
-        $products = ModelsProduct::where('category', '=', 'Camisetas cropped')->get();
-        
-        
-        return view('sections.men.menTshirtCropped', compact('products'));
+        $products = ModelsProduct::where('section', 'men')
+            ->where('category', 'Camisetas cropped')
+            ->get();
+
+        $sizes = ProductSize::all();
+
+
+
+
+        return view('sections.men.menTshirtCropped', compact('products', 'sizes'));
     }
 
-    public function getTshirtsGraphic(){
-        $products = ModelsProduct::where('category', '=', 'Camisetas estampadas')->get();
+    public function getTshirtsGraphic()
+    {
+        $products = ModelsProduct::where('section', 'men')
+            ->where('category', 'Camisetas estampadas')
+            ->get();
+
+
+        $sizes = ProductSize::all();
+        // Filtrar los últimos productos creados que coincidan con la sección y categoría correspondientes
+        $latestProduct = ModelsProduct::where('section', 'men')
+        ->where('category', 'Camisetas estampadas')
+        ->latest()
+        ->first();
+    
         
+    
+        $latestProducts = ModelsProduct::where('section', 'men')
+            ->where('category', 'Camisetas estampadas')
+            ->where('created_at', '<=', $latestProduct->created_at)
+            ->orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
+            
+        dd($latestProducts);
+    
         
-        return view('sections.men.menTshirtGraphic', compact('products'));
+        return view('sections.men.menTshirtGraphic', compact('products', 'sizes', 'latestProducts'));
     }
 
-    public function getSudaderas(){
+    public function getSudaderas()
+    {
         // Obtener todas las sudaderas con sus tallas asociadas
-        
+
         $products = ModelsProduct::where('category', '=', 'Sudaderas')->get();
         $sizes = ProductSize::all();
 
-        return view('sections.men.menSudaderas', compact('products','sizes'));
+
+        return view('sections.men.menSudaderas', compact('products', 'sizes'));
     }
 
-    public function getSudaderasSinCapucha(){
+    public function getSudaderasSinCapucha()
+    {
         $products = ModelsProduct::where('category', '=', 'Sudaderas Sin Capucha')->get();
-        
-        
-        return view('sections.men.menSudaderasSinCapucha', compact('products'));
+
+        $sizes = ProductSize::all();
+        return view('sections.men.menSudaderasSinCapucha', compact('products', 'sizes'));
     }
 
-    public function getPantalonesVaqueros(){
+    public function getPantalonesVaqueros()
+    {
         $products = ModelsProduct::where('category', '=', 'Pantalones vaquero')->get();
-        
-        
-        return view('sections.men.menPantalones', compact('products'));
+
+        $sizes = ProductSize::all();
+        return view('sections.men.menPantalones', compact('products', 'sizes'));
     }
 
-    public function getPantalonesBaggy(){
+    public function getPantalonesBaggy()
+    {
         $products = ModelsProduct::where('category', '=', 'Pantalones baggy')->get();
-        
-        
-        return view('sections.men.menPantalonesBaggy', compact('products'));
+
+        $sizes = ProductSize::all();
+
+        return view('sections.men.menPantalonesBaggy', compact('products', 'sizes'));
     }
 
-    public function getPantalonesCargo(){
+    public function getPantalonesCargo()
+    {
         $products = ModelsProduct::where('category', '=', 'Pantalones cargo')->get();
-        
-        
-        return view('sections.men.menPantalonesCargo', compact('products'));
+
+        $sizes = ProductSize::all();
+        return view('sections.men.menPantalonesCargo', compact('products', 'sizes'));
     }
 
-    public function getChaquetas(){
+    public function getChaquetas()
+    {
         $products = ModelsProduct::where('category', '=', 'Chaquetas')->get();
-        
-        
-        return view('sections.men.menChaqueta', compact('products'));
+
+        $sizes = ProductSize::all();
+
+        return view('sections.men.menChaqueta', compact('products', 'sizes'));
     }
 }

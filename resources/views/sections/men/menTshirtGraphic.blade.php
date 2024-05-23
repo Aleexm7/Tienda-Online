@@ -46,13 +46,12 @@
         </div>
         @endforeach
 
-         {{-- Mostrar productos nuevos --}}
-         @foreach($productoInsertado as $product)
+        @foreach($latestProducts as $product)
         <div class="col-md-4 mb-4">
             <form action="{{ route('add') }}" method="post">
                 @csrf
                 <div class="card">
-                    <img src="{{ asset('/assets/img/products/men/productosNuevos/camiseta'. $loop->index+1 .'.webp') }}">
+                    <img src="{{ asset('/assets/img/products/men/productosNuevos/camisetas'. $loop->index+1 .'.webp') }}">
                     <div class="card-body">
                         <p class="TitleProduct"><strong>{{$product->name}}</strong></p>
                         <div class="d-flex justify-content-between align-items-center mt-4">
@@ -82,6 +81,7 @@
             </form>
         </div>
         @endforeach
+       
     </div>
 </div>
 
