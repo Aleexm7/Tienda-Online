@@ -123,7 +123,7 @@ class ProductController extends Controller
         $show = $request->get('show', 5);
 
         // Validar que el valor de "show" sea un número permitido
-        if (!in_array($show, [5, 10, 20])) {
+        if (!in_array($show, [5, 10, 20, 50])) {
             $show = 5;
         }
 

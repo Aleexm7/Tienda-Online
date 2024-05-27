@@ -1,21 +1,18 @@
-@extends('layouts.dashboardadmin');
-
-
+@extends('layouts.dashboardadmin')
 
 @section('crud')
 @include('success')
 
-<a class="btn btn-primary mt-4" href="{{ URL('dashboardadmin/products/create') }}">Crear</a>
-
-<form method="get" action="{{ route('products.customIndex') }}" class="mt-2">
+<form method="get" action="{{ route('products.customIndex') }}" class="mt-4">
     <label for="cantidadRegistros">Mostrar:</label>
     <select id="cantidadRegistros" name="show" onchange="this.form.submit()">
         <option value="5" {{ request('show') == 5 ? 'selected' : '' }}>5</option>
         <option value="10" {{ request('show') == 10 ? 'selected' : '' }}>10</option>
         <option value="20" {{ request('show') == 20 ? 'selected' : '' }}>20</option>
+        <option value="50" {{ request('show') == 50 ? 'selected' : '' }}>50</option>
     </select>
 </form>
-<table id="TablaProductos" class="table table-striped table-bordered shadow-lg mt-2" style="width:100%">
+<table id="TablaProductos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg bg-primary text-white">
         <tr class="table-primary">
             <th scope="col">ID</th>

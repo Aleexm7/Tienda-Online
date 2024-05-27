@@ -51,6 +51,26 @@ Route::middleware(['admin'])->prefix('dashboardadmin')->group(function () {
     Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     // Ruta para mostrar la lista de productos (con paginación y cantidad personalizada)
     Route::get('/products', [ProductController::class, 'customIndex'])->name('products.customIndex');
+
+
+    /******RUTAS PARA EL CRUD DE LOS USUARIOS*******/
+
+    //Ruta para ver tabla de los usuarios registrados
+    Route::get('/user', [DashboardController::class, 'showUsers'])->name('showUsers');
+
+     // Ruta para mostar el formulario de edición para usuarios
+     Route::get('/user/edit/{id}', [DashboardController::class, 'editUser'])->name('user.edit');
+
+     // Ruta para procesar la actualización de usuarios
+     Route::put('/user/update/{id}', [DashboardController::class, 'updateUser'])->name('user.update');
+
+     //Ruta para eliminar un usuario
+    Route::delete('/user/delete/{id}', [DashboardController::class, 'destroyUser'])->name('user.destroy');
+
+    Route::get('/user/create', [DashboardController::class, 'createUser'])->name('user.create');
+
+    // Ruta para procesar el almacenamiento del usuario registrado
+    Route::post('/user', [DashboardController::class, 'storeUser'])->name('user.store');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

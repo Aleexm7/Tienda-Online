@@ -6,7 +6,7 @@
 
 <h2>Editar Producto</h2>
 
-<form action="{{route('products.update', $product->id)}}" method="POST">
+<form action="{{route('product.update', $product->id)}}" method="POST">
     @method('PUT')
     @csrf <!-- Esto genera un token. Laravel sabe que es un tipo submit y no se va a explotar ninguna vulnerabilidad -->
     

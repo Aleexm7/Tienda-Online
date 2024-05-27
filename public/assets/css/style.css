@@ -107,3 +107,21 @@ span > a {
 .TitleProduct {
     font-size: 14px;
 }
+
+/* Esto pertenece al dashboardadmin */
+#dashboard > .nav-item > .nav-link > span:hover{
+    text-decoration: underline;
+}
+
+
+#dashboard > .nav-item > .nav-link:not(.hovering):not(.active)::after {
+    display: none;
+  }
+
+#dashboardContent{
+    overflow-x: hidden;
+}
+
+.dropdown-menu .show{
+    margin-left: 30px;
+}
