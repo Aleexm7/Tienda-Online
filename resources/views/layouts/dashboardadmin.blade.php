@@ -27,15 +27,9 @@
           </a>
         </li>
         <li class="nav-item mt-2">
-          <a href="#" class="nav-link link-light d-flex align-items-center" aria-current="page">
+          <a href="{{route('home')}}" class="nav-link link-light d-flex align-items-center" aria-current="page">
             <img src="{{asset('assets/img/icons/globe.svg')}}" alt="icono dashboard" class="me-2">
             <span>Sitio web</span>
-          </a>
-        </li>
-        <li class="nav-item mt-2">
-          <a href="#" class="nav-link link-light d-flex align-items-center">
-            <img src="{{asset('assets/img/icons/shopping-cart.svg')}}" alt="icono dashboard" class="me-2">
-            <span>Pedidos</span>
           </a>
         </li>
         <li class="nav-item mt-2 dropdown">

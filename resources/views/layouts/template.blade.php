@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 
-<body>
+<body class="min-vh-100">
     <!-- Aquí invocaremos a los section que no queramos que tengan navbar y footer -->
     @yield('general')
     @yield('cartSection')

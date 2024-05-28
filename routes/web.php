@@ -24,7 +24,10 @@ use App\Http\Controllers\CartController;
 // Rutas de autenticación (si usas Auth::routes())
 Auth::routes(['verify' => true]);
 
-Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/home', [WelcomeController::class, 'index'])->name('home');    
+// Esta ruta será la página de inicio y ejecutará la función countProducts
+
+
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -74,18 +77,15 @@ Route::middleware(['admin'])->prefix('dashboardadmin')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
+    
 
     Route::get('/profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
 });
 
-Route::middleware('role:customer')->get('/home', [WelcomeController::class, 'index'])->name('inicio');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /* -------------- SECTION MEN --------------------*/
 
@@ -172,5 +172,6 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
 
     Route::delete('/remove/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 
+    Route::post('/checkout/{key}', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 
 });

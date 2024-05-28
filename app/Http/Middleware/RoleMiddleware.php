@@ -16,7 +16,7 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (! $request->user() || ! in_array($request->user()->user_role, $roles)) {
-            return redirect('/tienda');
+            return redirect('/home');
         }
         return $next($request);
     }

@@ -22,14 +22,10 @@ class CartController extends Controller
         $cart = Cart::where('user_id', $userId)->first();
 
         if (!$cart) {
-
             return redirect()->route('home')->with('error', 'No hay productos en el carrito.');
         }
 
         // Obtener los productos del carrito junto con sus tamaños y detalles
-        $cartProducts = CartProductModel::where('cart_id', $cart->id)->get();
-
-        // Consulta para obtener los datos del carrito y los productos asociados
         $cartProducts = DB::table('carts')
             ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
             ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
@@ -38,9 +34,6 @@ class CartController extends Controller
             ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category', 'products.section as section', 'cart_products.quantity')
             ->get();
 
-        /* dd($cartProducts); */
-
-
         // Obtener la cantidad de productos en el carrito
         $quantityProduct = DB::table('carts')
             ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
@@ -48,17 +41,12 @@ class CartController extends Controller
             ->select('cart_products.quantity')
             ->get();
 
-
         $quantities = [];
-
-        // Recorrer cada cantidad para almacenarla en el array
         foreach ($quantityProduct as $quantity) {
             $quantities[] = $quantity->quantity;
         }
 
-
-
-        // Array asociativo que mapea las categorías de productos con los nombres de las subcarpetas de imágenes
+        /*  // Array asociativo que mapea las categorías de productos con los nombres de las subcarpetas de imágenes
         $categoryImageFolders = [
             'Sudaderas' => 'sudaderas',
             'Sudaderas sin capucha' => 'sudaderas',
@@ -80,31 +68,31 @@ class CartController extends Controller
             'zapato' => 'zapatos',
         ];
 
+        
         // Construimos las rutas completas de las imágenes de los productos
         foreach ($cartProducts as $product) {
-            if ($product->section === 'hombre' && isset($categoryImageFolders[$product->category])) {
+            if ($product->section === 'hombre') {
                 $categoryFolder = $categoryImageFolders[$product->category];
                 $product->image_path = "/assets/img/products/men/{$categoryFolder}/{$product->product_image}";
-            } elseif ($product->section === 'mujer' && isset($categoryImageFolders[$product->category])) {
+            } elseif ($product->section === 'mujer') {
                 $categoryFolder = $categoryImageFoldersWomen[$product->category];
                 $product->image_path = "/assets/img/products/women/{$categoryFolder}/{$product->product_image}";
             }
+            
+            
+        } */
 
 
-
-            $subtotal = 0;
-            foreach ($cartProducts as $product) {
-                
-                $subtotal += $product->product_price * $product->quantity;
-            }
-
-
-            // Calcular el total sumando el impuesto al subtotal (21%)
-            $tax = $subtotal * 0.21;
-            $total = $subtotal + $tax;
-
-            return view('sections.cartSection', compact('cartProducts', 'quantities', 'subtotal', 'tax', 'total'));
+        $subtotal = 0;
+        foreach ($cartProducts as $product) {
+            $subtotal += $product->product_price * $product->quantity;
         }
+
+        // Calcular el total sumando el impuesto al subtotal (21%)
+        $tax = $subtotal * 0.21;
+        $total = $subtotal + $tax;
+
+        return view('sections.cartSection', compact('cartProducts', 'quantities', 'subtotal', 'tax', 'total'));
     }
 
 
@@ -171,5 +159,14 @@ class CartController extends Controller
             // El producto no existe en el carrito
             return redirect()->back()->with('error', 'El producto no existe en el carrito.');
         }
+    }
+
+
+    public function checkout(Request $request)
+    {
+
+        $key = $request->input('key');
+
+        return view('checkout', compact('key'));
     }
 }

@@ -38,7 +38,7 @@
                 <a href="{{ route('ProductosCarrito') }}" class="cart-icon me-4">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
-                        0
+                    0
                     </span>
                 </a>
                 @if(auth()->user()->hasRole('admin'))
