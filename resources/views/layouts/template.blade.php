@@ -27,6 +27,7 @@
     @yield('general')
     @yield('cartSection')
     @yield('checkout')
+    @yield('paymentConfirmation')
 
 </body>
 

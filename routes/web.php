@@ -9,6 +9,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\MenController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,8 @@ use App\Http\Controllers\CartController;
 // Rutas de autenticación (si usas Auth::routes())
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [WelcomeController::class, 'index'])->name('home');    
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/home', [WelcomeController::class, 'index'])->name('home');     
 // Esta ruta será la página de inicio y ejecutará la función countProducts
 
 
@@ -174,4 +176,5 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
 
     Route::post('/checkout/{key}', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 
+    Route::post('/confirmPayment', [PaymentController::class, 'confirmPayment'])->name('confirmPayment');
 });

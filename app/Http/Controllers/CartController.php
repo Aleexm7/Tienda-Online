@@ -83,16 +83,7 @@ class CartController extends Controller
         } */
 
 
-        $subtotal = 0;
-        foreach ($cartProducts as $product) {
-            $subtotal += $product->product_price * $product->quantity;
-        }
-
-        // Calcular el total sumando el impuesto al subtotal (21%)
-        $tax = $subtotal * 0.21;
-        $total = $subtotal + $tax;
-
-        return view('sections.cartSection', compact('cartProducts', 'quantities', 'subtotal', 'tax', 'total'));
+        return view('sections.cartSection', compact('cartProducts', 'quantities'));
     }
 
 
@@ -167,6 +158,31 @@ class CartController extends Controller
 
         $key = $request->input('key');
 
-        return view('checkout', compact('key'));
+        $userId = Auth::user()->id;
+
+
+       
+
+        // Obtener los productos del carrito junto con sus tamaños y detalles
+        $cartProducts = DB::table('carts')
+            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
+            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
+            ->join('products', 'product_sizes.product_id', '=', 'products.id')
+            ->where('carts.user_id', $userId)
+            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category', 'products.section as section', 'cart_products.quantity')
+            ->get();
+
+            $subtotal = 0;
+            foreach ($cartProducts as $product) {
+                $subtotal += $product->product_price * $product->quantity;
+            }
+    
+            
+            // Calcular el total sumando el impuesto al subtotal (21%)
+            $tax = $subtotal * 0.21;
+            $total = $subtotal + $tax;
+            
+
+        return view('sections.checkout', compact('key','total','subtotal'));
     }
 }
