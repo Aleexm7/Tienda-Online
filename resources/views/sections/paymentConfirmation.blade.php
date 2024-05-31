@@ -4,6 +4,10 @@
 
 <div class="container-fluid bg-secondary p-2 text-dark bg-opacity-25 overflow-x-hidden">
     <div class="row">
+        <div class="d-flex justify-content-center mt-2">
+            <h5><a href="{{route('home')}}" class="text-body">Volver a la tienda</a></h5>
+        </div>
+
         <div class="col-md-8 mx-auto mt-4">
             <div class="card shadow">
                 <div class="card-body">

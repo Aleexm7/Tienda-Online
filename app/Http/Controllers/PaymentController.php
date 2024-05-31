@@ -29,8 +29,8 @@ class PaymentController extends Controller
         $billingData = $request->only(['name', 'apellidos', 'email', 'address', 'address2', 'pais', 'ciudad', 'cp']);
 
         
-        // Obtener los productos del carrito del usuario (esto debería basarse en el ID del usuario, aquí asumimos $userId está disponible)
-        $userId = auth()->id(); // o cualquier otro método para obtener el ID del usuario autenticado
+        // Obtener los productos del carrito del usuario 
+        $userId = auth()->id();
        $cartProducts = DB::table('carts')
             ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
             ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
@@ -48,7 +48,7 @@ class PaymentController extends Controller
         $tax = $subtotal * 0.21;
         $total = $subtotal + $tax;
 
-        // Pasar los datos de facturación y los productos del carrito a la vista
+       
         return view('sections.paymentConfirmation', compact('billingData', 'cartProducts', 'subtotal', 'total'));
     }
 }

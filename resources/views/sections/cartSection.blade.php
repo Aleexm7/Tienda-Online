@@ -26,16 +26,13 @@
                   <p class="small mb-0">Talla: {{$cartProduct->product_size}}</p>
                 </div>
                 <div class="col-md-5 text-center">
-                  <div class="input-group" data-key="{{ $key }}">
-                    <h5 class="me-4">Precio: {{$cartProduct->product_price}}€</h5>
-                    <span class="input-group-text" style="cursor: pointer;" onclick="decreaseQuantity(this)">-</span>
-                    <input type="hidden" id="quantity_input_{{ $key }}" name="quantity_{{ $key }}" value="{{ $quantities[$key] ?? 0 }}">
-                    @if(isset($quantities[$key]))
-                    <p class="mx-2" id="quantity_display_{{ $key }}">{{ $quantities[$key] }}</p>
-                    @endif
-                    <!-- Icono de "+" -->
-                    <span class="input-group-text" style="cursor: pointer;" onclick="increaseQuantity(this)">+</span>
-                  </div>
+                <form action="{{ route('updateCart', ['id' => $cartProduct->product_id]) }}" method="POST">
+                    @csrf
+                    <div class="input-group" data-key="{{ $key }}">
+                      <h5 class="me-4">Precio: {{ $cartProduct->product_price}}€</h5>
+                      <input type="number" name="quantity" id="quantity_input_{{ $key }}" value="{{ $cartProduct->quantity }}" class="form-control text-center" min="1" onchange="this.form.submit()">
+                    </div>
+                  </form>
                 </div>
                 <div class="col-md-auto">
                   <form id="remove-product-{{ $key }}" action="{{ route('removeFromCart', ['id' => $cartProduct->product_id]) }}" method="POST">

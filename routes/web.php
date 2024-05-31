@@ -145,8 +145,6 @@ Route::prefix('mujer')->group(function () {
     /*Ruta para mostrar menu principal de la section mujer */
     Route::get('/', [App\Http\Controllers\WomanController::class, 'index'])->name('womanSection');
     
-
-
     /*Ruta para mostrar las camisetas */
     Route::get('/camisetas', [App\Http\Controllers\WomanController::class, 'getCamisetas'])->name('womanCamisetas');
 
@@ -177,4 +175,6 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
     Route::post('/checkout/{key}', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 
     Route::post('/confirmPayment', [PaymentController::class, 'confirmPayment'])->name('confirmPayment');
+
+    Route::post('/updateCart/{id}', [CartController::class, 'updateCart'])->name('updateCart');
 });
