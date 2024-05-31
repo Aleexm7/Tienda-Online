@@ -38,8 +38,9 @@
                 <a href="{{ route('ProductosCarrito') }}" class="cart-icon me-4">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-notification" class="position-absolute translate-middle badge rounded-pill bg-danger">
-                    0
+                    {{ auth()->user()->cart->products->sum('pivot.quantity') !== null ? '!' : '0'}}
                     </span>
+                    
                 </a>
                 @if(auth()->user()->hasRole('admin'))
                 <a href="{{ route('dashboardadmin') }}" class="dashboard-icon me-4" style="text-decoration: none; color: inherit;">

@@ -103,6 +103,7 @@
 
                 </div>
             </div>
+            <input type="hidden" name="total" value="{{ $total }}">
         </form>
     </div>
 </div>
