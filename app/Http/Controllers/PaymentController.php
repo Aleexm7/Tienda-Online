@@ -32,6 +32,7 @@ class PaymentController extends Controller
 
         // Guardar los datos en la tabla 'orders'
         $order = new Order();
+        
         $order->client_id = auth()->user()->id;
         $order->total = $request->total;
         $order->iva = 0.21; 
@@ -45,7 +46,9 @@ class PaymentController extends Controller
         // Guardar los detalles del pedido en la tabla 'order_details'
         foreach ($products as $product) {
             $orderDetail = new OrderDetail();
+            
             $orderDetail->order_id = $order->id;
+            
             $orderDetail->product_id = $product['id'];
             $orderDetail->quantity = $product['quantity'];
             $orderDetail->price = $product['price'];

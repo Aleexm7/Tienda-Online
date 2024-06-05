@@ -28,9 +28,9 @@
     <!-- Sección de Mejores Estilos Valorados -->
     <div class="container mt-4">
         <section class="bg-light p-4 w-100">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-center align-items-center mb-3">
                 <h2 class="title-style-home">Los Mejores Estilos Valorados</h2>
-                <a href="#"> <i class="fas fa-arrow-right"></i></a>
+                
             </div>
 
             <div class="row">

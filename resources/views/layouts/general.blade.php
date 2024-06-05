@@ -6,7 +6,7 @@
     <div class="container-fluid">
 
         <div class="col-3">
-            <a class="navbar-brand" style="min-width: 140px;"><img src="/assets/img/logoUrbanStyle.png" width="140" height="60" alt="logo" class="ms-2"></a>
+            <a class="navbar-brand" id="brand"><img src="/assets/img/logoUrbanStyle.png" width="120" height="60" alt="logo" class="ms-2"></a>
         </div>
 
         <div class="col-6">
@@ -87,7 +87,7 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-md-3 text-center">
-                <img src="/assets/img/logoUrbanStyle.png" width="200" height="50" alt="logo">
+                <img src="/assets/img/logoUrbanStyle.png" width="140" height="60" alt="logo">
                 <div class="mt-3">
                     <a href="mailto:urbanstyle@gmail.com" id="emailLinkFooter">urbanstyle@gmail.com</a>
                 </div>
@@ -99,23 +99,23 @@
                     <a href="#"><i class="fab fa-linkedin-in text-white"></i></a>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
                 <h5 class="title-footer">We are URBAN</h5>
-                <ul class="list-unstyled">
-                    <li class="list-column-2"><a href="#">Nuestras tiendas</a></li>
-                    <li class="list-column-2"><a href="#">Trabaja con nosotros</a></li>
-                    <li class="list-column-2"><a href="#">Sobre nosotros</a></li>
+                <ul class="list-unstyled footer">
+                    <li class="list-colum2"><a class="text-white" href="#">Nuestras tiendas</a></li>
+                    <li class="list-colum2"><a class="text-white" href="#">Trabaja con nosotros</a></li>
+                    <li class="list-colum2"><a class="text-white" href="#">Sobre nosotros</a></li>
                 </ul>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 text-center">
                 <h5 class="title-footer">Ayuda</h5>
-                <ul class="list-unstyled">
-                    <li><a class="text-white" href="#">FaQ</a></li>
-                    <li><a class="text-white" href="#">Contacto</a></li>
-                    <li><a class="text-white" href="#">Pedido</a></li>
+                <ul class="list-unstyled footer">
+                    <li class="list-colum2"><a class="text-white" href="#">FaQ</a></li>
+                    <li class="list-colum2"><a class="text-white" href="#">Contacto</a></li>
+                    <li class="list-colum2"><a class="text-white" href="#">Pedido</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-center">
                 <h5 class="title-footer">¡Unete al club!</h5>
                 <div>
                     <p>Subcríbase a nostros y recibe un 10% de descuento en su primer pedido</p>
