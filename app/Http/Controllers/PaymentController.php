@@ -13,6 +13,7 @@ class PaymentController extends Controller
     {
 
         
+        
         // Validar los datos del formulario
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -36,11 +37,13 @@ class PaymentController extends Controller
         $order->iva = 0.21; 
         $order->status = 'pending';
 
-        dd($order);
+        
         $order->save();
 
+        $products = $request->input('products');
+        
         // Guardar los detalles del pedido en la tabla 'order_details'
-        foreach ($request->products as $product) {
+        foreach ($products as $product) {
             $orderDetail = new OrderDetail();
             $orderDetail->order_id = $order->id;
             $orderDetail->product_id = $product['id'];

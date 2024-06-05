@@ -158,7 +158,7 @@ Route::prefix('mujer')->group(function () {
     Route::get('/vestidos', [App\Http\Controllers\WomanController::class, 'getVestidos'])->name('womanVestidos');
 
     /*Ruta para mostrar los vestidos cortos */
-    Route::get('/vestidos-corto', [App\Http\Controllers\WomanController::class, 'getVestidosCorto'])->name('womanVestidosCorto');
+    Route::get('/vestidos-corto', [App\Http\Controllers\WomanController::class, 'getVestidosCorto'])->name('womanVestidosCortos');
 
        /*Ruta para mostrar los zapatos */
      Route::get('/zapatos', [App\Http\Controllers\WomanController::class, 'getZapatos'])->name('womanZapatos');
@@ -172,7 +172,7 @@ Route::middleware(['auth'])->prefix('cart')->group(function () {
 
     Route::delete('/remove/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 
-    Route::post('/checkout/{key}', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('checkout');
 
     Route::post('/confirmPayment', [PaymentController::class, 'confirmPayment'])->name('confirmPayment');
 

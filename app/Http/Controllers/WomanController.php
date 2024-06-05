@@ -14,10 +14,11 @@ class WomanController extends Controller
 
     public function getCamisetas()
     {
-        $products = Product::where('category', 'Camisetas básicas')
-                   ->where('section', 'mujer')
-                   ->get();
         
+        $products = Product::where('section', 'woman')
+                    ->where('category', 'Camisetas basicas')
+        
+                   ->get();
         
         return view('sections.woman.womanCamisetas', compact('products'));
     }
@@ -25,7 +26,7 @@ class WomanController extends Controller
     public function getPantalones()
     {
         $products = Product::where('category', 'Pantalones largo')
-                   ->where('section', 'mujer')
+                   ->where('section', 'woman')
                    ->get();
         
         
@@ -35,7 +36,7 @@ class WomanController extends Controller
     public function getPantalonesCorto()
     {
         $products = Product::where('category', 'Pantalones corto')
-                   ->where('section', 'mujer')
+                   ->where('section', 'woman')
                    ->get();
         
         
@@ -44,8 +45,8 @@ class WomanController extends Controller
 
     public function getVestidos()
     {
-        $products = Product::where('category', 'Vestidos largo')
-                   ->where('section', 'mujer')
+        $products = Product::where('category', 'Vestido largo')
+                   ->where('section', 'woman')
                    ->get();
         
         
@@ -54,8 +55,8 @@ class WomanController extends Controller
 
     public function getVestidosCorto()
     {
-        $products = Product::where('category', 'Vestidos corto')
-                   ->where('section', 'mujer')
+        $products = Product::where('category', 'Vestido corto')
+                   ->where('section', 'woman')
                    ->get();
         
         
@@ -64,8 +65,8 @@ class WomanController extends Controller
 
     public function getZapatos()
     {
-        $products = Product::where('section', 'mujer')
-                   ->whereIn('category', ['Sandalias planas', 'Sandalias plataforma'])
+        $products = Product::where('section', 'woman')
+                   ->where('category', 'zapatos')
                    ->get();
         
         

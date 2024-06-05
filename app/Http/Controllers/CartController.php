@@ -31,7 +31,18 @@ class CartController extends Controller
             ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
             ->join('products', 'product_sizes.product_id', '=', 'products.id')
             ->where('carts.user_id', $userId)
-            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category', 'products.section as section', 'cart_products.quantity')
+            ->select(
+                'products.id as product_id', 
+                'products.name as product_name',
+                'products.image as product_image',
+                'products.price as product_price',
+                'product_sizes.size as product_size',
+                'products.category as category',
+                'products.section as section',
+                'cart_products.quantity',
+                'cart_products.id as cart_product_id',
+                'product_sizes.id as product_size_id'
+                )
             ->get();
 
         // Obtener la cantidad de productos en el carrito
@@ -155,80 +166,58 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
-
-        $key = $request->input('key');
-
         $userId = Auth::user()->id;
+        $productIds = $request->input('product_id');
+        $cartProductIds = $request->input('cart_product_id');
+        $productSizeIds = $request->input('product_size_id');
+        $quantities = $request->input('quantity');
 
-
-
-
-        // Obtener los productos del carrito junto con sus tamaños y detalles
+        // Obtener los productos del carrito del usuario
         $cartProducts = DB::table('carts')
             ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
             ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
             ->join('products', 'product_sizes.product_id', '=', 'products.id')
             ->where('carts.user_id', $userId)
-            ->select('products.id as product_id', 'products.name as product_name', 'products.image as product_image', 'products.price as product_price', 'product_sizes.size as product_size', 'products.category as category', 'products.section as section', 'cart_products.quantity')
+            ->select(
+                'products.id as product_id',
+                'products.name as product_name',
+                'products.price as product_price',
+                'product_sizes.id as product_size_id',
+                'product_sizes.size as product_size',
+                'cart_products.id as cart_product_id',
+                'cart_products.quantity'
+            )
             ->get();
 
+            
         $subtotal = 0;
-        foreach ($cartProducts as $product) {
-            $subtotal += $product->product_price * $product->quantity;
-        }
 
+        foreach ($cartProducts as $key => $cartProduct) {
+            $newQuantity = $quantities[$key];
+            $difference = $newQuantity - $cartProduct->quantity;
+
+            // Actualizar la cantidad en cart_products
+            DB::table('cart_products')
+                ->where('id', $cartProduct->cart_product_id)
+                ->update(['quantity' => $newQuantity]);
+
+            // Actualizar el stock en product_sizes
+            DB::table('product_sizes')
+                ->where('id', $cartProduct->product_size_id)
+                ->update(['stock' => DB::raw("stock - {$difference}")]);
+
+            // Actualizar el total_stock en products
+            DB::table('products')
+                ->where('id', $cartProduct->product_id)
+                ->update(['total_stock' => DB::raw("total_stock - {$difference}")]);
+
+            $subtotal += $cartProduct->product_price * $newQuantity;
+        }
 
         // Calcular el total sumando el impuesto al subtotal (21%)
         $tax = $subtotal * 0.21;
         $total = $subtotal + $tax;
 
-
-        return view('sections.checkout', compact('key', 'total', 'subtotal'));
+        return view('sections.checkout', compact('total', 'subtotal', 'cartProducts'));
     }
-
-
-    public function updateCart(Request $request, $id)
-    {
-        $quantity = $request->input('quantity');
-
-        $userId = Auth::user()->id;
-
-        $cartProduct = DB::table('carts')
-            ->join('cart_products', 'carts.id', '=', 'cart_products.cart_id')
-            ->join('product_sizes', 'cart_products.product_sizes_id', '=', 'product_sizes.id')
-            ->join('products', 'product_sizes.product_id', '=', 'products.id')
-            ->where('carts.user_id', $userId)
-            ->where('products.id', $id)
-            ->select('cart_products.id as cart_product_id', 'cart_products.quantity', 'product_sizes.id as product_size_id', 'product_sizes.stock', 'products.total_stock')
-            ->first();
-
-
-        if (!$cartProduct) {
-            return redirect()->back()->with('error', 'Producto no encontrado en el carrito.');
-        }
-
-        // Calcular la diferencia en la cantidad
-        $difference = $quantity - $cartProduct->quantity;
-
-
-        // Actualizar la cantidad en cart_products
-        DB::table('cart_products')
-            ->where('id', $cartProduct->cart_product_id)
-            ->update(['quantity' => $quantity]);
-
-        // Actualizar el stock en product_sizes
-        DB::table('product_sizes')
-            ->where('id', $cartProduct->product_size_id)
-            ->update(['stock' => DB::raw("stock - {$difference}")]);
-
-        // Actualizar el total_stock en products
-        DB::table('products')
-            ->where('id', $id)
-            ->update(['total_stock' => DB::raw("total_stock - {$difference}")]);
-
-
-        return redirect()->back()->with('success', 'Cantidad actualizada correctamente.');
-    }
-
-
 }

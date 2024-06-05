@@ -93,17 +93,23 @@
                                 <p class="mb-2">Total (Incl. impuestos)</p>
                                 <p class="mb-2">{{$total}}€</p>
                             </div>
-                            <button type="submit" class="btn btn-info btn-block btn-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="total" value="{{ $total }}">
+            @foreach ($cartProducts as $key => $cartProduct)
+            
+                <input type="hidden" name="products[{{ $key }}][id]" value="{{ $cartProduct->product_id }}">
+                
+                <input type="hidden" name="products[{{ $key }}][quantity]" value="{{ $cartProduct->quantity }}">
+                <input type="hidden" name="products[{{ $key }}][price]" value="{{ $cartProduct->product_price }}">
+            @endforeach
+            <button type="submit" class="btn btn-info btn-block btn-lg">
                                 <div class="d-flex justify-content-between">
                                     <span>Realizar Pago <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                 </div>
                             </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <input type="hidden" name="total" value="{{ $total }}">
         </form>
     </div>
 </div>
