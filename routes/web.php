@@ -90,6 +90,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
 
     Route::get('/profile/edit/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 
 

@@ -28,7 +28,7 @@
     @yield('cartSection')
     @yield('checkout')
     @yield('paymentConfirmation')
-
+    @yield('profile')
 </body>
 
 </html>

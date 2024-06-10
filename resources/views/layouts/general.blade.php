@@ -47,7 +47,7 @@
                     <i class="fas fa-tachometer-alt"></i>
                 </a>
                 @endif
-                <a href="{{ route('logout') }}" class="user-icon me-4"><i class="fas fa-user"></i></a>
+                <a href="{{ route('profile') }}" class="user-icon me-4"><i class="fas fa-user"></i></a>
             </div>
             @else
             <div class="text-end d-none d-md-block">
