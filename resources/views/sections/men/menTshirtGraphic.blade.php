@@ -50,8 +50,19 @@
         <div class="col-md-4 mb-4">
             <form action="{{ route('add') }}" method="post">
                 @csrf
-                <div class="card">
-                    <img src="{{ asset('/assets/img/products/men/productosNuevos/camisetas'. $loop->index+1 .'.webp') }}">
+                <div class="card shadow mb-5 bg-body rounded">
+                @php
+                            // Ruta principal de la imagen
+                            $imagePath = '/assets/img/products/men/camisetas/camisetas' . ($loop->index + 1) . '.webp';
+                            // Ruta alternativa de la imagen
+                            $newImagePath = '/assets/img/products/men/camisetas/productosNuevos/productoNuevo' . ($loop->index + 1) . '.jpg';
+                        @endphp
+                        
+                        @if (file_exists(public_path($imagePath)))
+                            <img src="{{ asset($imagePath) }}" alt="camisetas">
+                        @else (file_exists(public_path($newImagePath)))
+                            <img src="{{ asset($newImagePath) }}" alt="camisetas nueva">
+                        @endif
                     <div class="card-body">
                         <p class="TitleProduct"><strong>{{$product->name}}</strong></p>
                         <div class="d-flex justify-content-between align-items-center mt-4">

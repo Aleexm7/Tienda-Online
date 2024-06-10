@@ -10,7 +10,7 @@
     </video>
 </div>
 
-<!-- Products card -->
+<!-- Products -->
 <div class="container">
     <div class="row mt-4">
         <div class="d-flex justify-content-between align-items-center mt-4">
@@ -18,22 +18,22 @@
             <a href="{{ route('menSudaderas') }}"><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/sudaderas/sudadera1.webp') }}" alt="sudadera beige">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/sudaderas/sudadera2.webp') }}" alt="sudadera beige">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/sudaderas/sudadera3.webp') }}" alt="sudadera beige">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/sudaderas/sudadera4.webp') }}" alt="sudadera beige">
             </div>
         </div>
@@ -46,7 +46,7 @@
             <a href="{{ route('menPantalones') }}"><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesBaggy1.webp') }}" alt="pantalones baggy 1">
             </div>
         </div>
@@ -56,12 +56,12 @@
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesCargo1.webp') }}" alt="pantalones cargo 1">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/pantalones/pantalonesCargo2.webp') }}" alt="pantalones cargo 2">
             </div>
         </div>
@@ -73,24 +73,24 @@
             <a href="{{ route('menChaquetas') }}"><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/chaquetas/chaquetas1.webp') }}" alt="sudadera beige">
                
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/chaquetas/chaquetas2.webp') }}" alt="sudadera not a fan grey">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/chaquetas/chaquetas3.webp') }}" alt="sudadera beige">
                 
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/chaquetas/chaquetas4.webp') }}" alt="sudadera gris">
                 
             </div>
@@ -103,23 +103,23 @@
             <a href="{{ route('menTshirtBasic') }}"><i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2 mb-4">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/camisetas/camisetas1.webp') }}" alt="sudadera beige">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2 mb-4">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/camisetas/camisetas2.webp') }}" alt="sudadera not a fan grey">
                
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2 mb-4">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/camisetas/camisetas5.webp') }}" alt="sudadera beige">
             </div>
         </div>
         <div class="col-md-3 py-3 py-md-0 mt-2 mb-4">
-            <div class="card">
+            <div class="card shadow mb-5 bg-body rounded">
                 <img src="{{ asset('/assets/img/products/men/camisetas/camisetas6.webp') }}" alt="sudadera gris">
             </div>
         </div>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,16 +13,21 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
     <div id="app">
+        <video autoplay muted loop class="video-background">
+            <source src="assets/img/slider/video1.mp4" type="video/mp4">
+        </video>
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
+
 </html>

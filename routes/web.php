@@ -10,6 +10,7 @@ use App\Http\Controllers\MenController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +28,20 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/home', [WelcomeController::class, 'index'])->name('home');     
-// Esta ruta será la página de inicio y ejecutará la función countProducts
+
 
 
 
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
+
+Route::get('/registro', function () {
+    return view('auth.register');
+})->name('register');
+
+
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('olvidarContraseña');
 
 Route::middleware(['admin'])->prefix('dashboardadmin')->group(function () {
 

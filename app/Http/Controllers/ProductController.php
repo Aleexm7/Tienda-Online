@@ -49,7 +49,7 @@ class ProductController extends Controller
             $originalName = $file->getClientOriginalName();
 
             // Construir la ruta de destino
-            $destinationPath = public_path("assets/img/products/{$request->section}/productosNuevos");
+            $destinationPath = public_path("assets/img/products/{$request->section}/{$request->category}/productosNuevos");
 
             // Mover el archivo al destino
             if ($file->move($destinationPath, $originalName)) {

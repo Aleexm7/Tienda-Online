@@ -503,14 +503,7 @@ class DatabaseSeeder extends Seeder
                 'total_stock' => 200,
                 'section' => 'woman',
             ],
-            [
-                'name' => 'Sandalias tacón plataforma tachas ',
-                'price' => 40,
-                'image' => 'zapato4.jpg',
-                'category' => ' zapatos',
-                'total_stock' => 200,
-                'section' => 'woman',
-            ],
+            
             [
                 'name' => 'Sandalias plataforma hebillas ',
                 'price' => 40,
@@ -535,6 +528,14 @@ class DatabaseSeeder extends Seeder
                 'total_stock' => 200,
                 'section' => 'woman',
             ],
+            [
+                'name' => 'Sandalias tacón plataforma tachas ',
+                'price' => 40,
+                'image' => 'zapato4.jpg',
+                'category' => ' zapatos',
+                'total_stock' => 200,
+                'section' => 'woman',
+            ]
 
         ];
 
